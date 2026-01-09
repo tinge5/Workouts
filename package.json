@@ -11,6 +11,7 @@
     "@supabase/supabase-js": "^2.90.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "^7.12.0",
     "workbox-recipes": "^6.2.4",
     "workbox-routing": "^6.2.4",
     "workbox-strategies": "^6.2.4"
