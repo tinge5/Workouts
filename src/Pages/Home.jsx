@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className='screen'>
       <img src ="../public/images/workoutslogo.svg" alt="Workouts Logo" className="workouts-logo"></img>
-      <button className="buttons" onClick={() => navigate('/auth')}>Sign in</button>     
+      <button className="buttons" onClick={() => navigate('/plans')}>Sign in</button>     
     </div>
   );
 }
