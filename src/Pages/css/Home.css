@@ -12,13 +12,19 @@ flex-direction: column;
 justify-content: center;
 
 }
+.buttons{
+    background-color: #FF5005;
+    color: #fcfcfc;
+    font-family: fantasy;
+    border-radius: 8px;
+    border-color: #101010;
+}
 .workouts-logo {
 
-position: absolute;
 width: 61.49vw;
 width: clamp(300px, 61.49vw, 800px);
 
-
+margin-bottom: 24px;
 height: clamp(55px, 20vh, 150px);
 left: 19.154%;
 top: 39.2vh;
@@ -26,10 +32,21 @@ top: 39.2vh;
 body{
     overflow: hidden;
     background: #101010;
-    align-items: center;
+    color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     width: 100%;
+}
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #101010;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
