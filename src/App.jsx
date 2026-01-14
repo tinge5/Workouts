@@ -3,6 +3,7 @@ import { Routes, useNavigate, Route } from "react-router-dom";
 import './App.css'
 import StartScreen from './Pages/StartScreen.jsx';
 import Plans from './Pages/Plans.jsx';
+import Profile from './Pages/Profile.jsx';
 import BodyBackgroundController from './BodyClassController.jsx';
 import { useEffect, useState } from 'react';
 import { supabase } from './config/supabaseClient'; // Adjust path if needed
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<StartScreen />} />
       <Route path="/plans" element={<Plans />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
     </>
     
