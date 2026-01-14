@@ -4,5 +4,25 @@
     margin: 1px;
     padding: 3px;
     font-size: 16px;
-    width: 15vw;
+    width: 25vw;
+    max-width: 210px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3px;
+}
+.button {
+    background-color: #000000;
+    border: 3px solid #FF5005;
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }

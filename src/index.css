@@ -26,9 +26,9 @@ code {
 
 }
 .header {
-  position: fixed;
+  position: relative;
   width: 50%;
-  height: 20vh;
+  height: 10vh;
   background: inherit;
   display: flex;
   align-items: flex-start;

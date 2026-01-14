@@ -16,7 +16,6 @@ export default function Auth() {
           email,
           password
         })
-
         if (error) {
           console.error(error.message)
         } else {
@@ -37,6 +36,17 @@ export default function Auth() {
           navigate('/plans');
           
       }
+  const signin = async (email, password) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email, password
+        })
+        if (error) {
+          console.error(error.message)
+        } else {
+          console.log("User signed in:", data)
+          navigate('/plans');
+        }
+  }
   return (
     <div className='screen'>
       <Header />
@@ -54,7 +64,11 @@ export default function Auth() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={() => signup(email, password)}>Sign Up</button>
+      <div className="button-container">
+        <button className="buttons" onClick={() => signup(email, password)}>Sign Up</button>
+        <button className="buttons" onClick={() => signin(email, password)}>Sign In</button>
+
+      </div>
     </div>
   )
 }

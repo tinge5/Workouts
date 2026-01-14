@@ -12,7 +12,6 @@ export default function BodyBackgroundController() {
     body.style.backgroundColor = "#101010";
 
     if (location.pathname === "/plans") {
-      body.style.backgroundColor = "#f70505"; 
       console.log("Plans page");
     }
     if (location.pathname === "/auth") {
