@@ -1,7 +1,7 @@
 import logo from './logo.svg'
 import { Routes, useNavigate, Route } from "react-router-dom";
 import './App.css'
-import Home from './Pages/Home.jsx';
+import StartScreen from './Pages/StartScreen.jsx';
 import Plans from './Pages/Plans.jsx';
 import BodyBackgroundController from './BodyClassController.jsx';
 import { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ function App() {
    <>
     <BodyBackgroundController />
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<StartScreen />} />
       <Route path="/plans" element={<Plans />} />
       <Route path="/auth" element={<Auth />} />
     </Routes>

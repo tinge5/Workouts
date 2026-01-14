@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom';
-import './css/Home.css';
-export default function Home() {
+import './css/StartScreen.css';
+export default function StartScreen() {
   const navigate = useNavigate();
 
   return (
