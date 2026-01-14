@@ -1,6 +1,7 @@
 import {supabase} from '../config/supabaseClient.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header.jsx';
 import './css/Auth.css';
 
 
@@ -38,7 +39,7 @@ export default function Auth() {
       }
   return (
     <div className='screen'>
-    <img src="../public/images/workoutslogo.svg" alt="Logo" className="logo" />
+      <Header />
       <h1>Auth Page</h1>
       <p>This is the authentication page of the application. and where you wil create stuff bla bla</p>
       <input className='input-field'
