@@ -13,3 +13,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.logo {
+
+  position: fixed;
+  width: clamp(75px, 10vw, 140px);
+  height: auto;
+  max-height: 75px;
+  min-height: 50px;
+  left: 0;
+  top: 0;
+
+
+}
+.header {
+  position: fixed;
+  width: 50%;
+  height: 20vh;
+  background: inherit;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}

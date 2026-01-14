@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from './config/supabaseClient'; // Adjust path if needed
 import { useLocation } from 'react-router-dom';
 import { use } from 'react';
+import Auth from './Pages/Auth.jsx';
 function App() {
   const [count, setCount] = useState(0)
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/plans" element={<Plans />} />
+      <Route path="/auth" element={<Auth />} />
     </Routes>
     </>
     
