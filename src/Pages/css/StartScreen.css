@@ -3,13 +3,14 @@
     color: #fcfcfc;
     font-family: fantasy;
     border-radius: 8px;
-    border-color: #101010;
-    box-shadow: 0 0 20px #FF5005;
+    border-color: #ffffff;
+    box-shadow: 0 0 5px #ffffff;
 }
 .workouts-logo {
 
 width: 61.49vw;
 width: clamp(300px, 61.49vw, 800px);
+filter: drop-shadow(0 0 5px #FF5005);
 
 margin-bottom: 24px;
 height: clamp(55px, 20vh, 150px);

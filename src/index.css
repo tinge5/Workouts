@@ -20,6 +20,8 @@ code {
   height: auto;
   max-height: 75px;
   min-height: 50px;
+  filter: drop-shadow(0 0 5px #FF5005);
+
   left: 0;
   top: 0;
 
@@ -28,6 +30,7 @@ code {
 .profile-logo {
 
   position: fixed;
+  filter: drop-shadow(0 0 5px #fefdff);
   width: clamp(40px, 5vw, 140px);
   height: auto;
   max-height: 75px;
