@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {supabase} from '../config/supabaseClient.js';
+import workoutslogo from '../public/images/workoutslogo.svg';
 
 import { useEffect } from 'react';
 import './css/StartScreen.css';
@@ -24,7 +25,7 @@ export default function StartScreen() {
 
   return (
     <div className='screen'>
-      <img src ="../public/images/workoutslogo.svg" alt="Workouts Logo" className="workouts-logo"></img>
+      <img src ={workoutslogo} alt="Workouts Logo" className="workouts-logo"></img>
       {user ? (
         <button className="buttons" onClick={() => navigate('/plans')}>Home</button>
       ) : <button className="buttons" onClick={() => navigate('/auth')}>Sign in</button>     
