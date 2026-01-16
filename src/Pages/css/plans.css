@@ -32,7 +32,7 @@
     height: 100%;
     border-radius: 8px;
     overflow-wrap: break-word;
-    min-width: 80px;
+    min-width: 100px;
     word-wrap: break-word;
     word-break: break-word;
     white-space: pre-wrap;  /* preserves line breaks but allows wrapping */
