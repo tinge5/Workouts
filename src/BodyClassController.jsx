@@ -10,12 +10,14 @@ export default function BodyBackgroundController() {
 
     // Default background
     body.style.backgroundColor = "#101010";
+    document.documentElement.style.backgroundColor = "#101010";
 
     if (location.pathname === "/plans") {
       console.log("Plans page");
     }
     if (location.pathname === "/auth") {
       body.style.backgroundColor = "gray"; 
+      document.documentElement.style.backgroundColor = "gray";
       console.log("Auth page");
     }
   }, [location.pathname]);
