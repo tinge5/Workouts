@@ -11,10 +11,6 @@ export default function Plans() {
       <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
       <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
       <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
 
       </div>
     </div>
