@@ -28,11 +28,12 @@ code {
   max-height: 75px;
   min-height: 50px;
   filter: drop-shadow(0 0 5px #FF5005);
-
   left: 0;
   top: 0;
-
-
+}
+.logo:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
 }
 .profile-logo {
 
@@ -44,8 +45,10 @@ code {
   min-height: 50px;
   right: 10px;
   top: 0;
-
-
+}
+.profile-logo:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
 }
 .plus-icon{
   position: relative;
@@ -59,7 +62,11 @@ code {
   align-self: center;
 
 }
-
+.plus-icon:hover {
+  /* Styles applied on hover */
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
 
 .header {
   position: relative;
