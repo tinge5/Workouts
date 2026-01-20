@@ -1,17 +1,79 @@
 import "./css/plans.css";
+import { supabase } from "../config/supabaseClient.js";
 import Header from "../Header.jsx";
+import { useRStatus } from "./StartScreen.jsx";
+import { useEffect, useState } from "react";
 export default function Plans() {
+    const paragraphs = [];
+    const [plans, setPlans] = useState(0);
+    const user = useRStatus();
+    const [addPlan, setAddPlan] = useState(false);
+
+
+    useEffect(() => {
+    async function PlanNumber() {
+      if (!user) {
+        console.log("No authenticated user found.");
+        return null;
+      }
+      const { data, error } = await supabase
+        .from('UserAccounts')
+        .select('Number_of_plans')
+        .eq('id', user.id)
+        .single();
+
+        if(data){
+          console.log("Number of plans fetched:", data.Number_of_plans);
+          setPlans(data.Number_of_plans);
+        }
+        if(error){
+          console.log("Error fetching number of plans:", error);
+          return null;
+        }
+    }
+    PlanNumber();
+  }, [user]);
+  async function AddNewPlan() {
+      if (!user) {
+        console.log("No authenticated user found.");
+        return;
+      }
+      const newplans = plans + 1;
+      
+      const { data, error } = await supabase
+        .from('UserAccounts')
+        .update({ Number_of_plans: newplans })
+        .eq('id', user.id)
+        .single();
+      if (data) {
+        console.log("Number of plans updated:", data.Number_of_plans);
+        setPlans(data.Number_of_plans);
+        setAddPlan(false);
+      }
+      if (error) {
+        console.log("Error updating number of plans:", error);
+        return;
+      }
+    }
+    useEffect(() => {
+      if (addPlan) {
+        AddNewPlan();
+      }
+    }, [addPlan]);
+
+    for (let i = 0; i < plans; i++) {
+      paragraphs.push(<p key={i} className="cards">Plan {i + 1}</p>);
+    }
   return (
     <div className="screen">
       <Header />
       <h1 style={{ color: "white", textAlign: "center" }}>Plans Page</h1>
 
       <div className="plans-card">
+        {paragraphs}
+        {addPlan ? <p key={plans} className="cards">Plan {plans + 1}</p> : null}
 
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-      <span className="cards">This is the plans page of the application. I willcontinue to spit fdlasfjlsadjfkslfsajfl;jfd;asjf;safjs;afjlksa;jfkls;ajfsadjf;</span>
-
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => setAddPlan(true)}/>
       </div>
     </div>
   );

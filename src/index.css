@@ -47,6 +47,18 @@ code {
 
 
 }
+.plus-icon{
+  position: relative;
+  filter: drop-shadow(0 0 5px #fefdff);
+
+  width: clamp(40px, 5vw, 140px);
+  height: auto;
+  max-height: 75px;
+  min-height: 50px;
+  justify-self: center;
+  align-self: center;
+
+}
 
 
 .header {

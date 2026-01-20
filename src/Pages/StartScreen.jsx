@@ -4,12 +4,10 @@ import {supabase} from '../config/supabaseClient.js';
 
 import { useEffect } from 'react';
 import './css/StartScreen.css';
-export default function StartScreen() {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function checkAuth() {
+export function useRStatus() {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+     async function checkAuth() {
       const {data, error} = await supabase.auth.getSession();
       if (data.session) {
         setUser(data.session.user);
@@ -21,11 +19,18 @@ export default function StartScreen() {
     }
     checkAuth();
   }, []);
+  return user;
+}
+export default function StartScreen() {
+  const navigate = useNavigate();
+  const IsUser = useRStatus();
+
+
 
   return (
     <div className='screen'>
       <img src ="/images/workoutslogo.svg" alt="Workouts Logo" className="workouts-logo"></img>
-      {user ? (
+      {IsUser ? (
         <button className="buttons" onClick={() => navigate('/plans')}>Home</button>
       ) : <button className="buttons" onClick={() => navigate('/auth')}>Sign in</button>     
 }
