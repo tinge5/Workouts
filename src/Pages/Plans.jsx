@@ -57,8 +57,8 @@ export default function Plans() {
         const { data: myData, error: myError } = await supabase
         .from('plans')
         .insert([
-          { userID: user.id },
-          {plan_number: newplans}
+          { userID: user.id ,
+          plan_number: newplans}
         ]);
       if (myData) {
         console.log("New plan added:", myData);
