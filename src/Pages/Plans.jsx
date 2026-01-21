@@ -59,7 +59,8 @@ export default function Plans() {
         .insert([
           { userID: user.id ,
           plan_number: newplans}
-        ]);
+        ])
+        .select();
       if (myData) {
         console.log("New plan added:", myData);
       }
