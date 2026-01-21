@@ -3,11 +3,13 @@ import { supabase } from "../config/supabaseClient.js";
 import Header from "../Header.jsx";
 import { useRStatus } from "./StartScreen.jsx";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Plans() {
     const paragraphs = [];
     const [plans, setPlans] = useState(0);
     const user = useRStatus();
     const [addPlan, setAddPlan] = useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -77,7 +79,7 @@ export default function Plans() {
     }, [addPlan]);
 
     for (let i = 0; i < plans; i++) {
-      paragraphs.push(<p key={i} className="cards">Plan {i + 1}</p>);
+      paragraphs.push(<p key={i} className="cards" onClick={() => navigate("/workouts", { state: { planNumber: i + 1 } })}>Plan {i + 1}</p>);
     }
   return (
     <div className="screen">

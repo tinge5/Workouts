@@ -47,3 +47,7 @@
     /* text wrapping rules */
    
 }
+.cards:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}

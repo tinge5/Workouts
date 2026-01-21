@@ -3,13 +3,16 @@ import { supabase } from "../config/supabaseClient.js";
 import Header from "../Header.jsx";
 import { useRStatus } from "./StartScreen.jsx";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 export default function Workouts() {
     const paragraphs = [];
     const [plans, setPlans] = useState(0);
     const user = useRStatus();
     const [addPlan, setAddPlan] = useState(false);
     const [workouts, setWorkouts] = useState([]);
-
+    const location = useLocation();
+    const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
+    console.log("Navigated to Workouts page for Plan Number:", planNumber);
 
     useEffect(() => {
     async function DisplayWorkout() {
