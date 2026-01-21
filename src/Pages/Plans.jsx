@@ -54,6 +54,20 @@ export default function Plans() {
         console.log("Error updating number of plans:", error);
         return;
       }
+        const { data: myData, error: myError } = await supabase
+        .from('plans')
+        .insert([
+          { userID: user.id },
+          {plan_number: newplans}
+        ]);
+      if (myData) {
+        console.log("New plan added:", myData);
+      }
+      if (myError) {
+        console.log("Error adding new plan:", myError);
+        return;
+      }
+
     }
     useEffect(() => {
       if (addPlan) {
