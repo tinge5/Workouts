@@ -20,8 +20,8 @@ export default function Workouts() {
       console.log("Fetching workouts for user:", user.id);
       const { data, error } = await supabase
         .from('Workouts')
-        .select(`WorkoutID, Workout_name, Exercise, week, plans:plansID  (
-                plan_id 
+        .select(`WorkoutID, Workout_name, Exercise, week, plans:planID  (
+                planID 
         ),
                 UserAccounts (
                 id,
@@ -29,6 +29,8 @@ export default function Workouts() {
             )
         )
     `)  
+            .eq('userID', user.id);
+
         if (!data || data.length === 0) {
             console.log("No workouts found for this user.");
             return;
