@@ -12,6 +12,7 @@ export default function Workouts() {
     const [workouts, setWorkouts] = useState([]);
     const [exercise, setExercise] = useState([]);
     const location = useLocation();
+    const [planName, setPlanName] = useState(null);
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
     console.log("Navigated to Workouts page for Plan Number:", planNumber);
     useEffect(() => {
@@ -25,7 +26,8 @@ export default function Workouts() {
         .from('Workouts')
         .select(`WorkoutID, Workout_name, Exercise, week, plans:planID!inner  (
                 planID,
-                plan_number 
+                plan_number,
+                plan_name 
         ),
                 UserAccounts (
                 id,
@@ -46,6 +48,7 @@ export default function Workouts() {
           console.log("Heres the users workouts:", data, data[0].UserAccounts.username, data[0].Exercise);
           setWorkouts(data);
           setExercise(data[0].Exercise)
+          setPlanName(data[0].plans.plan_name);
           console.log(workouts)
           console.log(exercise)
 
@@ -91,22 +94,30 @@ export default function Workouts() {
   return (
     <div className="screen">
       <Header />
-      <h1 style={{ color: "white", textAlign: "center" }}>Plans Page</h1>
+      <h1 style={{ color: "white", textAlign: "center" }}> {planName ? planName : "Workouts"} </h1>
 
       <div className="plans-card">
         {paragraphs}
         {addPlan ? <p key={plans} className="card">Plan {plans + 1}</p> : null}
-        <div className="card">
-        {exercise?.map(ex =>(
-          <div className="exercise-bar" key={ex.exercise} >
-            <h1>{ex.name}</h1>
-            {ex.exercise}    {ex.sets}x{ex.reps}
-
+        {workouts.map((workout) => (
+        <div className="card" key = {workout.WorkoutID}>
+            <p style={{alignSelf: "center"}}>{workout.Workout_name}</p>
+          {workout.Exercise && workout.Exercise.length > 0 ? (
+            workout.Exercise.map((ex, index) => (
+              <div key={index} className="exercise-bar">
+                {ex.exercise}    {ex.sets}x{ex.reps} {ex.weight ? ` @ ${ex.weight}` : ''}
             </div>
+            ))
+          ) : (
+            <p>No exercises found for this workout.</p>
+          )}
+          </div>
         ))}
-        </div>
+          
+
         <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
+
+        </div>
       </div>
-    </div>
   );
 }
