@@ -91,3 +91,9 @@ code {
     flex-direction: column;
     justify-content: center;
 }
+.profile-name{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}

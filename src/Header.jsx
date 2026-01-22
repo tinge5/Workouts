@@ -7,6 +7,7 @@ export default function Header() {
   return (
     <div className="header">
       <img src="../images/workoutslogo.svg" alt="Logo" className="logo" onClick={() => navigate('/plans')}/>
+      <p style={{color: "white"}} className="profile-name">{user1 ? user1.email : 'u'}</p>
       {user1 ? <img src="../images/Profile.svg" alt="Profile" className="profile-logo" onClick={() => navigate('/profile')}/> : null}
     </div>
   );
