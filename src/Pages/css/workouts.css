@@ -23,13 +23,13 @@
     flex-direction: column;
     position: relative;
     justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
+    align-items: center;
+    gap: 2px;
     align-self: flex-start;
-    background-color: white;
-    border: 1px solid black;
-    box-shadow: 0 0 5px #000000;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 0 5px #ffffff;
+    color: rgb(255, 255, 255);
     width: 30%;
     height: 95%;
     border-radius: 8px;
@@ -57,18 +57,18 @@
     justify-content: flex-start; /* vertical alignment to top */
     align-items: flex-start;     /* horizontal alignment to left */
 
-    background-color: rgb(141, 140, 140);
+    background-color: rgb(255, 255, 255);
     border: 1px solid black;
-    box-shadow: 0 0 5px #000000;
+    box-shadow: 0 0 5px #ffffff;
     color: black;
     padding: 1px;
-    width: 90%;
+    width: 95%;
     height: auto;              /* fixed height for clarity */
-    border-radius: 8px;
     line-height: 1.25;
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: pre-wrap;      /* preserves line breaks */
+    
 }
 .exercise-bar h1,
 .exercise-bar p {
