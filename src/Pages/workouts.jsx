@@ -91,7 +91,7 @@ export default function Workouts() {
         {paragraphs}
         {addPlan ? <p key={plans} className="cards">Plan {plans + 1}</p> : null}
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => setAddPlan(true)}/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
       </div>
     </div>
   );
