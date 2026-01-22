@@ -1,4 +1,4 @@
-import "./css/plans.css";
+import "./css/workouts.css";
 import { supabase } from "../config/supabaseClient.js";
 import Header from "../Header.jsx";
 import { useRStatus } from "./StartScreen.jsx";
@@ -10,10 +10,10 @@ export default function Workouts() {
     const user = useRStatus();
     const [addPlan, setAddPlan] = useState(false);
     const [workouts, setWorkouts] = useState([]);
+    const [exercise, setExercise] = useState([]);
     const location = useLocation();
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
     console.log("Navigated to Workouts page for Plan Number:", planNumber);
-
     useEffect(() => {
     async function DisplayWorkout() {
       if (!user) {
@@ -23,8 +23,9 @@ export default function Workouts() {
       console.log("Fetching workouts for user:", user.id);
       const { data, error } = await supabase
         .from('Workouts')
-        .select(`WorkoutID, Workout_name, Exercise, week, plans:planID  (
-                planID 
+        .select(`WorkoutID, Workout_name, Exercise, week, plans:planID!inner  (
+                planID,
+                plan_number 
         ),
                 UserAccounts (
                 id,
@@ -32,7 +33,8 @@ export default function Workouts() {
             )
         )
     `)  
-            .eq('userID', user.id);
+            .eq('userID', user.id)
+            .eq('plans.plan_number', planNumber);
 
         if (!data || data.length === 0) {
             console.log("No workouts found for this user.");
@@ -41,8 +43,12 @@ export default function Workouts() {
 
 
         if(data){
-          console.log("Heres the users workouts:", data[0].UserAccounts.username, data[0].Exercise);
+          console.log("Heres the users workouts:", data, data[0].UserAccounts.username, data[0].Exercise);
           setWorkouts(data);
+          setExercise(data[0].Exercise)
+          console.log(workouts)
+          console.log(exercise)
+
         }
         if(error){
           console.log("Error fetching number of plans:", error);
@@ -89,8 +95,16 @@ export default function Workouts() {
 
       <div className="plans-card">
         {paragraphs}
-        {addPlan ? <p key={plans} className="cards">Plan {plans + 1}</p> : null}
+        {addPlan ? <p key={plans} className="card">Plan {plans + 1}</p> : null}
+        <div className="card">
+        {exercise?.map(ex =>(
+          <div className="exercise-bar" key={ex.exercise} >
+            <h1>{ex.name}</h1>
+            {ex.exercise}    {ex.sets}x{ex.reps}
 
+            </div>
+        ))}
+        </div>
         <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
       </div>
     </div>

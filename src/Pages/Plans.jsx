@@ -11,7 +11,6 @@ export default function Plans() {
     const [addPlan, setAddPlan] = useState(false);
     const navigate = useNavigate();
 
-
     useEffect(() => {
     async function PlanNumber() {
       if (!user) {
