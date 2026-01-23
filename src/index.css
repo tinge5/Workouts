@@ -96,4 +96,6 @@ code {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  filter: drop-shadow(0 0 5px #fffffe);
+
 }
