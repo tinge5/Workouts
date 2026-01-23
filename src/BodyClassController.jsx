@@ -28,6 +28,15 @@ export default function BodyBackgroundController() {
       document.documentElement.style.backgroundColor = "gray";
       console.log("Auth page");
     }
+    if (location.pathname === "/newplan") {
+      if (metaTheme) {
+        metaTheme.setAttribute('content', 'gray'); // change to red
+      }
+      body.style.backgroundColor = "gray"; 
+      document.documentElement.style.backgroundColor = "gray";
+      console.log("newplan page");
+    }
+
   }, [location.pathname]);
 
   return null; // renders nothing

@@ -17,6 +17,7 @@ export default function Plans() {
         console.log("No authenticated user found.");
         return null;
       }
+      console.log(user)
       const { data, error } = await supabase
         .from('UserAccounts')
         .select('Number_of_plans')
