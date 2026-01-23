@@ -5,11 +5,12 @@ import { useRStatus } from "./StartScreen.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Plans() {
-    const paragraphs = [];
+    const [currentplan, setCurrentplan] = useState({})
     const [plans, setPlans] = useState(0);
     const user = useRStatus();
     const [addPlan, setAddPlan] = useState(false);
     const navigate = useNavigate();
+    const [plandet, setPlandet] = useState([])
 
     useEffect(() => {
     async function PlanNumber() {
@@ -72,15 +73,47 @@ export default function Plans() {
       }
 
     }
+useEffect(() => {
+  async function plansDetails(){
+    if(!user){
+      console.log("no user sorry")
+      return
+    }
+  const {data, error} = await supabase 
+      .from('plans')
+      .select('plan_name, Current_week, plan_number')
+      .eq('userID', user.id);
+  
+    if(data){
+      setPlandet(data)
+      console.log("here's the plan details: ", data)
+    }
+    if(error){
+      console.log(error)
+    }
+  }
+  plansDetails()
+},[user]);
     useEffect(() => {
       if (addPlan) {
         AddNewPlan();
       }
     }, [addPlan]);
 
-    for (let i = 0; i < plans; i++) {
-      paragraphs.push(<p key={i} className="cards" onClick={() => navigate("/workouts", { state: { planNumber: i + 1 } })}>Plan {i + 1}</p>);
-    }
+ const paragraphs = Array.from({ length: plans }, (_, i) => (
+  <p
+    key={i + 1}
+    className="cards"
+    onClick={() => {
+      const selectedPlan = plandet.find(plan => plan.plan_number === i + 1);
+      setCurrentplan(selectedPlan);
+      console.log(selectedPlan);
+      navigate("/workouts", { state: { planNumber: i + 1, week: selectedPlan.Current_week } });
+}}
+  >
+    Plan {i + 1}
+  </p>
+));
   return (
     <div className="screen">
       <Header />

@@ -53,7 +53,7 @@
 }
 .exercise-bar {
     display: flex;
-    flex-direction: column;    /* stack children vertically */
+    flex-direction: row;    /* stack children vertically */
     justify-content: flex-start; /* vertical alignment to top */
     align-items: flex-start;     /* horizontal alignment to left */
 
@@ -74,4 +74,8 @@
 .exercise-bar p {
     margin: 0;       /* removes default top/bottom spacing */
     padding: 0;      /* removes default padding, if any */
+}
+.workoutname{
+    width: clamp(50px, 33.8%, 100px);
+    text-align: right;
 }

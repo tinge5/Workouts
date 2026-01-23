@@ -1,10 +1,13 @@
 .plan-card {
   border: 1px solid #000000;
   display: flex;
+  align-items: center;
   flex-direction: column;
   flex-wrap: nowrap;
   position: relative;
-  width: 90%;
+  grid-template-columns: 100px 1fr;
+  column-gap: 10px;
+  width: 70%;
   gap: 10px;
   border-radius: 0px;
   padding: 8px;
@@ -24,14 +27,40 @@
     flex-direction: row;    /* stack children vertically */
     justify-content: center; /* vertical alignment to top */
     align-items: center;     /* horizontal alignment to left */
-    gap: 10px;
+    gap: 0px;
     color: black;
     padding: 1px;
-    width: 95%;
+    width: 50%;
     height: auto;              /* fixed height for clarity */
     line-height: 1.25;
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: pre-wrap;      /* preserves line breaks */
     
+}
+input{
+  border: 1px solid #FF5005;
+  width: clamp(75px, 26vw, 100px);
+  filter: drop-shadow(0 0 3px #FF5005);
+
+}
+input::placeholder {
+  opacity: 1; /* 50% transparency */
+  color: black;
+
+}
+select {
+  border: 1px solid #FF5005;
+  padding: 3px;
+  background-color: white;
+  width: 105px;
+  filter: drop-shadow(0 0 3px #FF5005);
+
+}
+span{
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+  font-size: medium;
+  
 }

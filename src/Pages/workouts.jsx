@@ -12,22 +12,29 @@ export default function Workouts() {
     const [workouts, setWorkouts] = useState([]);
     const [exercise, setExercise] = useState([]);
     const location = useLocation();
+    const curWeek = location.state?.week || 1;
+
+    const [currentWeek, setCurrentWeek] = useState(location.state?.week || 1)
     const [planName, setPlanName] = useState(null);
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
-    console.log("Navigated to Workouts page for Plan Number:", planNumber);
+    console.log("Navigated to Workouts page for Plan Number:", planNumber, curWeek);
     useEffect(() => {
     async function DisplayWorkout() {
       if (!user) {
         console.log("No authenticated user found.");
         return null;
       }
+      console.log("Value of CurrentWeek", currentWeek)
       console.log("Fetching workouts for user:", user.id);
       const { data, error } = await supabase
         .from('Workouts')
         .select(`WorkoutID, Workout_name, Exercise, week, plans:planID!inner  (
                 planID,
                 plan_number,
-                plan_name 
+                plan_name,
+                Current_week,
+                Weeks 
+
         ),
                 UserAccounts (
                 id,
@@ -36,9 +43,11 @@ export default function Workouts() {
         )
     `)  
             .eq('userID', user.id)
-            .eq('plans.plan_number', planNumber);
+            .eq('plans.plan_number', planNumber)
+            .eq('plans.Current_week', currentWeek);
 
         if (!data || data.length === 0) {
+            setWorkouts([]), {/*Sets the workouts to nothing so nothing is displayed when no workouts are there */}
             console.log("No workouts found for this user.");
             return;
             }
@@ -59,7 +68,7 @@ export default function Workouts() {
         }
     }
     DisplayWorkout();
-  }, [user]);
+  }, [user, currentWeek]);
   async function AddNewPlan() {
       if (!user) {
         console.log("No authenticated user found.");
@@ -105,7 +114,7 @@ export default function Workouts() {
           {workout.Exercise && workout.Exercise.length > 0 ? (
             workout.Exercise.map((ex, index) => (
               <div key={index} className="exercise-bar">
-                {ex.exercise}    {ex.sets}x{ex.reps} {ex.weight ? ` @ ${ex.weight}` : ''}
+                <span className="workoutname">{ex.exercise}</span>   {ex.sets}x{ex.reps} {ex.weight ? ` @ ${ex.weight}` : ''}
             </div>
             ))
           ) : (
@@ -115,7 +124,7 @@ export default function Workouts() {
         ))}
           
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => setCurrentWeek((prev) => prev + 1)}/>
 
         </div>
       </div>

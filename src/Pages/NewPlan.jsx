@@ -10,6 +10,7 @@ import Header from "../Header"
 export default function NewPlan(){
     const user = useRStatus()
     const [value, setValue] = useState("")
+     
 
         return (
             <div className="screen">
@@ -17,29 +18,37 @@ export default function NewPlan(){
                 <h1>New Plan</h1>
                 <div className="plan-card">
                     <div className="planning">
-                        Plan Name
+                        <span style={{marginBotom: "0px"}}>Plan Name</span>
                         <input
                             type="text"
-                            placeholder=""
+                            placeholder="hey"
                             />
                         
                         </div>
 
                     <div className="planning">
-                    pick something 
-                    <select
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        >
-                        <option value="">Choose a workout</option>
-                        <option value="push">Push</option>
-                        <option value="pull">Pull</option>
-                        <option value="legs">Legs</option>
-                        </select>
+                    <span># of Weeks</span> 
+                    <input
+                            type="text"
+                            placeholder="hey"
+                            />
+                     </div>
+
+                    <div className="planning">
+                        <span>Progressive Overload?</span>
+                        <select
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            >
+                            {user ? <option value={user.email}>{user.email}</option> : null} {/*Make this the users choice when */}
+                            <option value="push">Yes</option>
+                            <option value="pull">No</option>
+                            </select>
                         
+
+                    </div>
                     </div>
                 </div>
 
-            </div>
         )
 }
