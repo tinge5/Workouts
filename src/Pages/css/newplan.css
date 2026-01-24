@@ -14,7 +14,7 @@
   height: 85%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #575252;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-bottom: 10vh;
   white-space: normal;
   -webkit-overflow-scrolling: touch;
@@ -55,6 +55,7 @@ select {
   min-width: 105px;
   width: 150px;
   filter: drop-shadow(0 0 3px #FF5005);
+  border-radius: 0;
 
 }
 span {
