@@ -131,7 +131,7 @@ export default function Workouts() {
         ))}
           
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => setCurrentWeek((prev) => prev + 1)}/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
 
         </div>
       </div>
