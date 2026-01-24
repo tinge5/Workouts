@@ -10,7 +10,9 @@ import Header from "../Header"
 export default function NewPlan(){
     const user = useRStatus()
     const [value, setValue] = useState("")
-     
+    useEffect(() => {
+
+    }, [value]);
 
         return (
             <div className="screen">
@@ -40,15 +42,27 @@ export default function NewPlan(){
                             value={value}
                             onChange={(e) => setValue(e.target.value)}
                             >
-                            {user ? <option value={user.email}>{user.email}</option> : null} {/*Make this the users choice when */}
-                            <option value="push">Yes</option>
-                            <option value="pull">No</option>
+                            {user ? <option value={user.email}>{user.email}</option> : null} {/*Make this the users choice when coming from an edit perspective*/}
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                             </select>
-                        
+                    </div>
+                    {value === "yes" && <div className="planning">
+                        <span>Increase each week</span>
+                        <select
+                            value={value}
+                            // onChange={(e) => setValue(e.target.value)}
+                            >
+                            {/*{user ? <option value={user.email}>{user.email}</option> : null} Make this the users choice when coming from an edit perspective*/}
+                            <option value="reps">Reps</option>
+                            <option value="weight">Weights</option>
+                            <option value="mix">Mix</option>
 
-                    </div>
-                    </div>
+                            </select>
+                    </div> }
+
                 </div>
+            </div>
 
         )
 }
