@@ -114,7 +114,7 @@ export default function Workouts() {
           {workout.Exercise && workout.Exercise.length > 0 ? (
             workout.Exercise.map((ex, index) => (
               <div key={index} className="exercise-bar">
-                <span className="workoutname">{ex.exercise}</span>   {ex.sets}x{ex.reps} {ex.weight ? ` @ ${ex.weight}` : ''}
+                <div className="workoutname">{ex.exercise}</div>   {ex.sets}x{ex.reps} {ex.weight ? ` @ ${ex.weight}` : ''}
             </div>
             ))
           ) : (
