@@ -25,8 +25,8 @@
  .planning{
     display: flex;
     flex-direction: row;    /* stack children vertically */
-    justify-content: left; /* vertical alignment to top */
-    align-items: left;     /* horizontal alignment to left */
+    justify-content: flex-start; /* vertical alignment to top */
+    align-items: flex-start;     /* horizontal alignment to left */
     gap: 0px;
     color: black;
     padding: 1px;
