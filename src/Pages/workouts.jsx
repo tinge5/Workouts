@@ -11,13 +11,15 @@ export default function Workouts() {
     const [addPlan, setAddPlan] = useState(false);
     const [workouts, setWorkouts] = useState([]);
     const [exercise, setExercise] = useState([]);
+    const [maxWeeks, setMaxWeeks] = useState(null)
     const location = useLocation();
+    
     const curWeek = location.state?.week || 1;
 
     const [currentWeek, setCurrentWeek] = useState(location.state?.week || 1)
     const [planName, setPlanName] = useState(null);
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
-    console.log("Navigated to Workouts page for Plan Number:", planNumber, curWeek);
+    console.log("Navigated to Workouts page for Plan Number:", planNumber, currentWeek);
     useEffect(() => {
     async function DisplayWorkout() {
       if (!user) {
@@ -44,7 +46,8 @@ export default function Workouts() {
     `)  
             .eq('userID', user.id)
             .eq('plans.plan_number', planNumber)
-            .eq('plans.Current_week', currentWeek);
+            .eq('plans.Current_week', currentWeek)
+            .eq('week', currentWeek);
 
         if (!data || data.length === 0) {
             setWorkouts([]), {/*Sets the workouts to nothing so nothing is displayed when no workouts are there */}
@@ -57,6 +60,7 @@ export default function Workouts() {
           console.log("Heres the users workouts:", data, data[0].UserAccounts.username, data[0].Exercise);
           setWorkouts(data);
           setExercise(data[0].Exercise)
+          setMaxWeeks(data[0].plans.Weeks)
           setPlanName(data[0].plans.plan_name);
           console.log(workouts)
           console.log(exercise)
@@ -103,7 +107,10 @@ export default function Workouts() {
   return (
     <div className="screen">
       <Header />
+      {currentWeek < maxWeeks ? <img src="../images/next.png" alt="next week" className="next" onClick={() => setCurrentWeek((prev) => prev + 1)}/> : null}
+      {currentWeek > 1 ? <img src="../images/back.png" alt="next week" className="back" onClick={() => setCurrentWeek((prev) => prev - 1)}/> : null}
       <h1 style={{ color: "white", textAlign: "center" }}> {planName ? planName : "Workouts"} </h1>
+      <p>Week {currentWeek}</p>
 
       <div className="plans-card">
         {paragraphs}
