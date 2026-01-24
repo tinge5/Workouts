@@ -53,7 +53,8 @@ select {
   padding: 3px;
   background-color: white;
   min-width: 60px;
-  width: 150px;
+  width: 151px;
+  align-self: flex-start;
   filter: drop-shadow(0 0 3px #FF5005);
   border-radius: 0;
   align-items: flex-end;
