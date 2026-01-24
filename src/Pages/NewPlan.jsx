@@ -18,7 +18,7 @@ export default function NewPlan(){
                 <h1>New Plan</h1>
                 <div className="plan-card">
                     <div className="planning">
-                        <span style={{marginBotom: "0px"}}>Plan Name</span>
+                        <span >Plan Name</span>
                         <input
                             type="text"
                             placeholder="hey"

@@ -25,22 +25,21 @@
  .planning{
     display: flex;
     flex-direction: row;    /* stack children vertically */
-    justify-content: center; /* vertical alignment to top */
-    align-items: center;     /* horizontal alignment to left */
+    justify-content: left; /* vertical alignment to top */
+    align-items: left;     /* horizontal alignment to left */
     gap: 0px;
     color: black;
     padding: 1px;
     width: 50%;
     height: auto;              /* fixed height for clarity */
     line-height: 1.25;
-    overflow-wrap: break-word;
-    word-break: break-word;
     white-space: pre-wrap;      /* preserves line breaks */
     
 }
 input{
   border: 1px solid #FF5005;
-  width: clamp(75px, 26vw, 100px);
+  min-width: 100px;
+  width: 145px;
   filter: drop-shadow(0 0 3px #FF5005);
 
 }
@@ -53,12 +52,14 @@ select {
   border: 1px solid #FF5005;
   padding: 3px;
   background-color: white;
-  width: 105px;
+  min-width: 105px;
+  width: 150px;
   filter: drop-shadow(0 0 3px #FF5005);
 
 }
-span{
-  width: 100px;
+span {
+  width: 200px;
+  min-width: 122.35px;
   text-align: right;
   margin-right: 10px;
   font-size: medium;
