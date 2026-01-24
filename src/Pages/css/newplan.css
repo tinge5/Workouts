@@ -1,7 +1,7 @@
 .plan-card {
   border: 1px solid #000000;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   flex-wrap: nowrap;
   position: relative;
@@ -25,12 +25,12 @@
  .planning{
     display: flex;
     flex-direction: row;    /* stack children vertically */
-    justify-content: flex-start; /* vertical alignment to top */
-    align-items: flex-start;     /* horizontal alignment to left */
+    justify-content: center; /* vertical alignment to top */
+    align-items: center;     /* horizontal alignment to left */
     gap: 0px;
     color: black;
     padding: 1px;
-    width: 50%;
+    width: 70%;
     height: auto;              /* fixed height for clarity */
     line-height: 1.25;
     white-space: pre-wrap;      /* preserves line breaks */
@@ -38,7 +38,7 @@
 }
 input{
   border: 1px solid #FF5005;
-  min-width: 100px;
+  min-width: 55px;
   width: 145px;
   filter: drop-shadow(0 0 3px #FF5005);
 
@@ -52,10 +52,11 @@ select {
   border: 1px solid #FF5005;
   padding: 3px;
   background-color: white;
-  min-width: 105px;
+  min-width: 60px;
   width: 150px;
   filter: drop-shadow(0 0 3px #FF5005);
   border-radius: 0;
+  align-items: flex-end;
 
 }
 span {
