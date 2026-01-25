@@ -1,6 +1,7 @@
 .plans-card {
   border: 1px solid #FF5005;
   display: flex;
+  position: relative;
   flex-direction: row;
   flex-wrap: nowrap;
   width: 75%;
@@ -105,11 +106,14 @@
 }
 
 .edit{
-    position: fixed;
-    top: 25.8%;
-    right: 17%;
+    position: absolute;
+    top: 40%;
+    right: -350%;
     filter: drop-shadow(0 0 3px #FF5005);
-    width: clamp(30px, 6vw, 70px)
+    width: clamp(30px, 10vw, 70px);
+    height: auto;
+    z-index: 1000;
+    
 }
 .edit:hover {
   opacity: 0.7; /* Example: make the image slightly transparent */
