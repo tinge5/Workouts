@@ -106,10 +106,10 @@
 
 .edit{
     position: fixed;
-    top: 23.8%;
+    top: 25.8%;
     right: 17%;
     filter: drop-shadow(0 0 3px #FF5005);
-    width: clamp(30px, 3vw, 50px)
+    width: clamp(30px, 6vw, 70px)
 }
 .edit:hover {
   opacity: 0.7; /* Example: make the image slightly transparent */
