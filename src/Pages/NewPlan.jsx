@@ -10,6 +10,11 @@ import Header from "../Header"
 export default function NewPlan(){
     const user = useRStatus()
     const [value, setValue] = useState("")
+    const location = useLocation()
+    const editing = location.state?.from === "edit"
+    const [name, setName] = useState(location.state?.name || null)
+    console.log("Coming from ", name, " and this is an..", location.state?.from)
+    console.log(editing)
     useEffect(() => {
 
     }, [value]);
@@ -43,8 +48,8 @@ export default function NewPlan(){
                             onChange={(e) => setValue(e.target.value)}
                             >
                             {user ? <option value={user.email}>{user.email}</option> : null} {/*Make this the users choice when coming from an edit perspective*/}
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value= "true" >Yes</option>
+                            <option value="false">No</option>
                             </select>
                     </div>
                     {value === "yes" && <div className="planning">

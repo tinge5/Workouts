@@ -4,6 +4,7 @@ import Header from "../Header.jsx";
 import { useRStatus } from "./StartScreen.jsx";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function Workouts() {
     const paragraphs = [];
     const [plans, setPlans] = useState(0);
@@ -13,9 +14,7 @@ export default function Workouts() {
     const [exercise, setExercise] = useState([]);
     const [maxWeeks, setMaxWeeks] = useState(null)
     const location = useLocation();
-    
-    const curWeek = location.state?.week || 1;
-
+    const navigate = useNavigate();
     const [currentWeek, setCurrentWeek] = useState(location.state?.week || 1)
     const [planName, setPlanName] = useState(null);
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
@@ -110,6 +109,7 @@ export default function Workouts() {
       {currentWeek < maxWeeks ? <img src="../images/next.png" alt="next week" className="next" onClick={() => setCurrentWeek((prev) => prev + 1)}/> : null}
       {currentWeek > 1 ? <img src="../images/back.png" alt="next week" className="back" onClick={() => setCurrentWeek((prev) => prev - 1)}/> : null}
       <h1 style={{ color: "white", textAlign: "center" }}> {planName ? planName : "Workouts"} </h1>
+      <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: planName} })}/>
       <p>Week {currentWeek}</p>
 
       <div className="plans-card">

@@ -84,15 +84,15 @@
 .back{
     filter: drop-shadow(0 0 3px #FF5005);
     position: fixed;
-    bottom: 30px;
-    left: 20px;
+    bottom: 40px;
+    left: 25px;
     width: clamp(30px, 3vw, 50px)
 }
 .next{
     filter: drop-shadow(0 0 2px #ffffff);
     position: fixed;
-    bottom: 30px;
-    right: 20px;
+    bottom: 40px;
+    right: 25px;
     width: clamp(30px, 3vw, 50px)
 }
 .back:hover {
@@ -100,6 +100,18 @@
   cursor: pointer; /* Ensures the hand icon appears on the image itself */
 }
 .next:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
+
+.edit{
+    position: fixed;
+    top: 23.8%;
+    right: 17%;
+    filter: drop-shadow(0 0 3px #FF5005);
+    width: clamp(30px, 3vw, 50px)
+}
+.edit:hover {
   opacity: 0.7; /* Example: make the image slightly transparent */
   cursor: pointer; /* Ensures the hand icon appears on the image itself */
 }
