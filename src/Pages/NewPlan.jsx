@@ -15,6 +15,7 @@ export default function NewPlan(){
     const [name, setName] = useState(location.state?.name || null)
     console.log("Coming from ", name, " and this is an..", location.state?.from)
     console.log(editing)
+    console.log("value is ", value)
     useEffect(() => {
 
     }, [value]);
@@ -52,10 +53,9 @@ export default function NewPlan(){
                             <option value="false">No</option>
                             </select>
                     </div>
-                    {value === "yes" && <div className="planning">
+                    {value === "true" && <div className="planning">
                         <span>Increase each week</span>
                         <select
-                            value={value}
                             // onChange={(e) => setValue(e.target.value)}
                             >
                             {/*{user ? <option value={user.email}>{user.email}</option> : null} Make this the users choice when coming from an edit perspective*/}
@@ -65,6 +65,10 @@ export default function NewPlan(){
 
                             </select>
                     </div> }
+                    <div className="planning">
+                        <button className="confirm">Confirm</button>
+                        
+                    </div>
 
                 </div>
             </div>

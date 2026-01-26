@@ -68,3 +68,13 @@ span {
   font-size: medium;
   
 }
+.confirm{
+  align-self: center;
+  color: #FF5005;
+  background-color: #000000;
+  filter: drop-shadow(0 0 3px #FF5005);
+  font-size: 80%;
+  border-color: #FF5005;
+  width: clamp(40px, 15%, 70px)
+
+}
