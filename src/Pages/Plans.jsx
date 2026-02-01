@@ -81,7 +81,7 @@ useEffect(() => {
     }
   const {data, error} = await supabase 
       .from('plans')
-      .select('plan_name, Current_week, plan_number')
+      .select('*')
       .eq('userID', user.id);
   
     if(data){
@@ -108,7 +108,7 @@ useEffect(() => {
       const selectedPlan = plandet.find(plan => plan.plan_number === i + 1);
       setCurrentplan(selectedPlan);
       console.log(selectedPlan);
-      navigate("/workouts", { state: { planNumber: i + 1, week: selectedPlan.Current_week } });
+      navigate("/workouts", { state: { planNumber: i + 1, week: selectedPlan.Current_week, plan: selectedPlan, userplans: plans } });
 }}
   >
     Plan {i + 1}
@@ -123,7 +123,7 @@ useEffect(() => {
         {paragraphs}
         {addPlan ? <p key={plans} className="cards">Plan {plans + 1}</p> : null}
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => navigate("/newplan")}/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => navigate("/newplan", {state : {userplans: plans}}) }/>
       </div>
     </div>
   );

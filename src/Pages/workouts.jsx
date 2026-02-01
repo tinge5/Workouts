@@ -15,6 +15,8 @@ export default function Workouts() {
     const [maxWeeks, setMaxWeeks] = useState(null)
     const location = useLocation();
     const navigate = useNavigate();
+    const userplanNum = location.state?.userplans || null
+    const selectedPlan = location.state?.plan || null
     const [currentWeek, setCurrentWeek] = useState(location.state?.week || 1)
     const [planName, setPlanName] = useState(null);
     const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
@@ -25,8 +27,10 @@ export default function Workouts() {
         console.log("No authenticated user found.");
         return null;
       }
+      console.log("User has ", userplanNum, " plans")
       console.log("Value of CurrentWeek", currentWeek)
       console.log("Fetching workouts for user:", user.id);
+      console.log("This is the plan ", selectedPlan)
       const { data, error } = await supabase
         .from('Workouts')
         .select(`WorkoutID, Workout_name, Exercise, week, plans:planID!inner  (
@@ -50,7 +54,9 @@ export default function Workouts() {
 
         if (!data || data.length === 0) {
             setWorkouts([]), {/*Sets the workouts to nothing so nothing is displayed when no workouts are there */}
-            console.log("No workouts found for this user.");
+            
+
+            console.log("No workouts found for this user. ", data );
             return;
             }
 
@@ -63,6 +69,7 @@ export default function Workouts() {
           setPlanName(data[0].plans.plan_name);
           console.log(workouts)
           console.log(exercise)
+          console.log(planName)
 
         }
         if(error){
@@ -111,7 +118,7 @@ export default function Workouts() {
       
       <h1 style={{ color: "white", textAlign: "center" }}> {planName ? planName : "Workouts"} </h1>
       <div style={{display: "flex", flexDirection:"row", position: "relative"}}>      <p style={{textAlign: "center"}}>Week {currentWeek}</p>
-      <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: planName} })}/>
+      <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: selectedPlan} })}/>
 </div>
       <div className="plans-card">
         {paragraphs}
