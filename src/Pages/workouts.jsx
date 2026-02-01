@@ -118,7 +118,7 @@ export default function Workouts() {
       
       <h1 style={{ color: "white", textAlign: "center" }}> {selectedPlan ? selectedPlan.plan_name : "Workouts"} </h1>
       <div style={{display: "flex", flexDirection:"row", position: "relative"}}>      <p style={{textAlign: "center"}}>Week {currentWeek}</p>
-      <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: selectedPlan} })}/>
+      <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: selectedPlan, userplans: userplanNum} })}/>
 </div>
       <div className="plans-card">
         {paragraphs}

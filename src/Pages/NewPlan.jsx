@@ -14,17 +14,58 @@ export default function NewPlan(){
     const editing = location.state?.from === "edit"
     const name = (location.state?.name?.plan_name || null)
     const num = location.state?.name?.plan_number || null
+    const [planID, setPlanID] = useState(location.state?.name?.planID || null)
     const [overload, setOverload] = useState("")
     const [plan_name, setPlan_name] = useState("")
     const [maxWeeks, setMaxWeeks] = useState("")
     const [plannumber, setPlannumber] = useState(location.state?.userplans || null)
     const [increase, setIncrease] = useState("")
     console.log("This is a ", editing, " edit from ", name)
-    console.log("This is the current plan num ", num)
+    console.log("This is the current plan num ", num, " from planID ", planID)
     console.log("users total plans ", plannumber)
+    
+    async function deletePlan(){
+        if(!user || planID === null){
+            console.log("nah")
+            return
+        }
+        const sure = window.confirm("Are you sure you want to delete tis plan")
+        if(!sure){
+            return
+        }
+        const {data: datas, error: errors} = await supabase
+            .from("UserAccounts")
+            .update({Number_of_plans: plannumber-1})
+            .eq("id", user.id)
+            .select()
+            if(datas){
+                console.log("updated ", datas)
+            }
+            if(errors){
+                console.log("issue updated the total plan number for this")
+            }
+        const {data, error} = await supabase
+            .from("plans")
+            .delete()
+            .eq("userID", user.id)
+            .eq("planID", planID)
+            .select()
+        if(data){
+            console.log("plan deleted", data)
+            navigate("/plans")
+        }
+        if(error){
+            console.log("delete didn't work")
+        }
+
+    }
     async function confrim() {
         if(!user){
             console.log("nah")
+            return
+        }
+        if(overload === "" || plan_name === "" || maxWeeks === ""){
+            alert("Please fill out everything before pressing confirm, try switching Progressive overload back and forth if stuck")
             return
         }
         if(!editing){
@@ -42,10 +83,6 @@ export default function NewPlan(){
             }
             setPlannumber(plannumber+1)
 
-        }
-        if(overload === "" || plan_name === "" || maxWeeks === ""){
-            alert("Please fill out everything before pressing confirm")
-            return
         }
         console.log(plannumber)
         const {data, error} = await supabase
@@ -91,7 +128,8 @@ export default function NewPlan(){
                     setIncrease(data[0].increase)
                     setMaxWeeks(data[0].Weeks)
                     setOverload(data[0].Progressive_Overload)
-                    setPlan_name(data[0].plan_name)                    
+                    setPlan_name(data[0].plan_name)     
+                    setPlanID(data[0].planID)               
                 }
                 else{
                     console.log("no data ", error)
@@ -172,6 +210,11 @@ export default function NewPlan(){
                         <button onClick={() => confrim()}className="confirm">Confirm</button>
                         
                     </div>
+                    {editing &&
+                    <div className ="planning">
+                        <button className="delete"onClick={()=> deletePlan()}>Delete Plan</button>
+                    </div>
+                    }
 
                 </div>
             </div>
