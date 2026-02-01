@@ -36,7 +36,14 @@ export default function BodyBackgroundController() {
       document.documentElement.style.backgroundColor = "gray";
       console.log("newplan page");
     }
-
+    if (location.pathname === "/newworkout") {
+      if (metaTheme) {
+        metaTheme.setAttribute('content', 'orange'); // change to red
+      }
+      body.style.backgroundColor = "orange"; 
+      document.documentElement.style.backgroundColor = "orange";
+      console.log("newworkout page");
+    }
   }, [location.pathname]);
 
   return null; // renders nothing
