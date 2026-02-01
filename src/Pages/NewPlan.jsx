@@ -1,7 +1,7 @@
 import { supabase } from "../config/supabaseClient"
 import { useEffect, useState } from "react"
 import { useRStatus } from "./StartScreen"
-import { useLocation } from "react-router-dom"
+import { Navigate, useLocation, useNavigate } from "react-router-dom"
 import CreatableSelect from "react-select/creatable"
 import "./css/newplan.css";
 import Header from "../Header"
@@ -10,6 +10,7 @@ import Header from "../Header"
 export default function NewPlan(){
     const user = useRStatus()
     const location = useLocation()
+    const navigate = useNavigate()
     const editing = location.state?.from === "edit"
     const name = (location.state?.name?.plan_name || null)
     const num = location.state?.name?.plan_number || null
@@ -67,6 +68,10 @@ export default function NewPlan(){
         }
         if(error)
             console.log("error updating/creating", error)
+        setTimeout(() => {
+            navigate("/plans")
+            
+        }, 2000 )
     }
     useEffect(() => {
         async function retriveplan(){

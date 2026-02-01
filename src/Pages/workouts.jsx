@@ -116,7 +116,7 @@ export default function Workouts() {
       {currentWeek < maxWeeks ? <img src="../images/next.png" alt="next week" className="next" onClick={() => setCurrentWeek((prev) => prev + 1)}/> : null}
       {currentWeek > 1 ? <img src="../images/back.png" alt="next week" className="back" onClick={() => setCurrentWeek((prev) => prev - 1)}/> : null}
       
-      <h1 style={{ color: "white", textAlign: "center" }}> {planName ? planName : "Workouts"} </h1>
+      <h1 style={{ color: "white", textAlign: "center" }}> {selectedPlan ? selectedPlan.plan_name : "Workouts"} </h1>
       <div style={{display: "flex", flexDirection:"row", position: "relative"}}>      <p style={{textAlign: "center"}}>Week {currentWeek}</p>
       <img src="../images/edit.png" alt="next week" className="edit"onClick={() => navigate('/newplan', { state : {from: "edit", name: selectedPlan} })}/>
 </div>
