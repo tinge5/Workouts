@@ -31,8 +31,8 @@ export default function StartScreen() {
     <div className='screen'>
       <img src ="/images/workoutslogo.svg" alt="Workouts Logo" className="workouts-logo"></img>
       {IsUser ? (
-        <button className="buttons" onClick={() => navigate('/plans')}>Home</button>
-      ) : <button className="buttons" onClick={() => navigate('/auth')}>Sign in</button>     
+        <button  onClick={() => navigate('/plans')}>Home</button>
+      ) : <button  onClick={() => navigate('/auth')}>Sign in</button>     
 }
     </div>
   );
