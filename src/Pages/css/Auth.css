@@ -14,27 +14,23 @@
   margin-top: 3px;
   gap: 5px;
 }
-button {
+.button {
   align-self: center;
   color: #ffffff;
   background-color: #FF5005;
   border-color: #ffffff;
   min-width: 60px;
-  width: 60px;
+  width: 80px;
   border-radius: 8px;
-
+  filter: drop-shadow(0 0 3px #ffffff);
 }
 .buttons{
-  align-self: center;
-  color: #ffffff;
   background-color: #FF5005;
-  border-color: #FF5005;
-  min-width: 60px;
-  width: 151px;
-  border-radius: 8px;
-  height: 20px;
-  font-size: 18px;
-  line-height: 1px;
+    color: #fcfcfc;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    border-radius: 0px;
+    border-color: #ffffff;
+    box-shadow: 0 0 5px #ffffff;
 }
 .buttons:hover {
   opacity: 0.7; /* Example: make the image slightly transparent */
