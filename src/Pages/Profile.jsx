@@ -53,9 +53,15 @@ async function updateUsername(name){
           .single()
         if(data){
           console.log("Updated username to", data.username,"'s account")
+          setUsername(data.username)
+          setTimeout(() => {
+            navigate("/plans")
+            
+        }, 1500 )
         }
         if(error){
           console.log(error)
+          return
         }
     }
   return (

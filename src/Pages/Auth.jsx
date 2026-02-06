@@ -52,7 +52,7 @@ export default function Auth() {
           console.error(error.message)
         } else {
           console.log("User signed in:", data)
-          navigate('/plans');
+          navigate('/profile');
         }
   }
   return (
