@@ -40,7 +40,7 @@ export default function Auth() {
               return;
           }
           console.log("User account created in database:", data.user.id);
-          navigate('/plans');
+          navigate('/profile');
           
       }
   const signin = async (email, password) => {
@@ -52,7 +52,7 @@ export default function Auth() {
           console.error(error.message)
         } else {
           console.log("User signed in:", data)
-          navigate('/profile');
+          navigate('/plans');
         }
   }
   return (
