@@ -124,7 +124,7 @@ export default function Workouts() {
         {paragraphs}
         {addPlan ? <p key={plans} className="card">Plan {plans + 1}</p> : null}
         {workouts.map((workout) => (
-        <div className="card" key = {workout.WorkoutID}>
+        <div className="card" key = {workout.WorkoutID}  onClick={() => navigate("/newworkout",{ state: {workout: workout} })}>
             <p style={{alignSelf: "center"}}>{workout.Workout_name}</p>
           {workout.Exercise && workout.Exercise.length > 0 ? (
             workout.Exercise.map((ex, index) => (
@@ -139,7 +139,7 @@ export default function Workouts() {
         ))}
           
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon"/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => navigate("/newworkout",{ state: { week: currentWeek, maxWeeks: maxWeeks } })}/>
 
         </div>
       </div>

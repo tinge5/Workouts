@@ -41,6 +41,10 @@
     white-space: pre-wrap;  /* preserves line breaks but allows wrapping */
     overflow-y: auto;        
 }
+.card:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
 .cards > * {
     /* allow flex children to shrink */
     min-width: 0;
