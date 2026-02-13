@@ -35,7 +35,6 @@ export default function NewWorkout(){
                     <div className="planning">
                         <p className= "titles">Workout Name</p>
                         <input
-                            className="inputs"
                             type="text"
                             placeholder={workoutName}
                             value={workoutName}
