@@ -7,14 +7,14 @@
   position: relative;
   grid-template-columns: 100px 1fr;
   column-gap: 10px;
-  width: 70%;
+  width: 95%;
   gap: 10px;
   border-radius: 0px;
   padding: 8px;
   height: 85%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #575252;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-bottom: 10vh;
   white-space: normal;
   -webkit-overflow-scrolling: touch;
@@ -26,8 +26,8 @@
  .planning{
     display: flex;
     flex-direction: row;    /* stack children vertically */
-    justify-content: left; /* vertical alignment to top */
-    align-items: left;     /* horizontal alignment to left */
+    justify-content: center; /* vertical alignment to top */
+    align-items: center;     /* horizontal alignment to center */
     gap: 0px;
     color: black;
     padding: 1px;
@@ -60,7 +60,7 @@ select {
 .exercise-header{
   display: inline-flex;
   flex-direction: row;    /* stack children vertically */
-  justify-content: left; /* vertical alignment to top */
+  justify-content: center; /* vertical alignment to top */
   align-items: center;     /* horizontal alignment to left */
   gap: 0px;
   color: black;
