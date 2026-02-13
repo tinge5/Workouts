@@ -7,7 +7,7 @@
   position: relative;
   grid-template-columns: 100px 1fr;
   column-gap: 10px;
-  width: 95%;
+  width: 85%;
   gap: 10px;
   border-radius: 0px;
   padding: 8px;
@@ -45,6 +45,18 @@
   flex: 0 0 auto;
   filter: drop-shadow(0 0 0px #FF5005);
 }
+.inputs-number{
+  border: 1px solid #f30505;
+  filter: drop-shadow(0 0 0px #FF5005);
+  width: 32px;
+  max-width: 32px;
+  min-width: 30px;
+  padding: 0;              /* remove extra spacing */
+  box-sizing: border-box;   /* include border/padding in width */
+  flex: 0 0 auto;           /* prevent flex from stretching */
+  appearance: textfield;
+}
+
 select {
   border: 1px solid #FF5005;
   padding: 3px;
@@ -69,14 +81,14 @@ select {
   height: auto;              /* fixed height for clarity */
   line-height: 1.25;
   white-space: pre-wrap;      /* preserves line breaks */
-  margin-right: 2px;
+  margin-right: 5px;
 
 }
 .titles{
   display: inline-block;
   width: auto;
   text-align: left;
-  margin-right: 1px;
+  margin-right: 1.5px;
   font-size: small
 
 }

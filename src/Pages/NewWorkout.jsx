@@ -55,30 +55,30 @@ export default function NewWorkout(){
                         <div className='exercise-header'>
                         <p className= "titles">Sets</p>
                         <input
-                            className="inputs"
-                            type="text"
-                            placeholder={workoutName}
-                            value={workoutName}
+                            className="inputs-number"
+                            type="number"
+                            placeholder={1000}
+                            value={1000}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
                         <div className='exercise-header'>
                         <p className= "titles">Reps</p>
                         <input
-                            className="inputs"
-                            type="text"
-                            placeholder={workoutName}
-                            value={workoutName}
+                            className="inputs-number"
+                            type="number"
+                            placeholder={1000}
+                            value={1000}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
                         <div className='exercise-header'>
                         <p className= "titles">Weight</p>
                         <input
-                            className="inputs"
-                            type="text"
-                            placeholder={workoutName}
-                            value={workoutName}
+                            className="inputs-number"
+                            type="number"
+                            placeholder={1000}
+                            value={1000}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
