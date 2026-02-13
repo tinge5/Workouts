@@ -46,10 +46,10 @@ input{
 .inputs{
   border: 1px solid #fdfdfd;
   min-width: 55px;
-  width: 70px;
+  width: 60px;
+  max-width: 62px;
   filter: drop-shadow(0 0 3px #FF5005);
   height: 25%;
-  margin-right: 10px;
 
 
 }
@@ -70,12 +70,27 @@ select {
   align-items: flex-end;
 
 }
+.exercise-header{
+  display: flex;
+  flex-direction: row;    /* stack children vertically */
+  justify-content: center; /* vertical alignment to top */
+  align-items: center;     /* horizontal alignment to left */
+  gap: 0px;
+  color: black;
+  padding: 1px;
+  width: 100px;
+  height: auto;              /* fixed height for clarity */
+  line-height: 1.25;
+  white-space: pre-wrap;      /* preserves line breaks */
+  margin-right: 5px;
+
+}
 .titles{
   display: inline-block;
   width: auto;
   text-align: left;
   margin-right: 2px;
-  font-size: medium
+  font-size: small
 
 }
 .confirm{

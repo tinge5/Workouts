@@ -43,6 +43,7 @@ export default function NewWorkout(){
                             />
                     </div>
                     <div className="planning">
+                        <div className="exercise-header">
                         <p className= "titles">Exercise</p>
                         <input
                             className="inputs"
@@ -51,6 +52,8 @@ export default function NewWorkout(){
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
+                        </div>
+                        <div className='exercise-header'>
                         <p className= "titles">Sets</p>
                         <input
                             className="inputs"
@@ -59,6 +62,8 @@ export default function NewWorkout(){
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
+                        </div>
+                        <div className='exercise-header'>
                         <p className= "titles">Reps</p>
                         <input
                             className="inputs"
@@ -67,6 +72,8 @@ export default function NewWorkout(){
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
+                        </div>
+                        <div className='exercise-header'>
                         <p className= "titles">Weight</p>
                         <input
                             className="inputs"
@@ -75,6 +82,7 @@ export default function NewWorkout(){
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
+                        </div>
 
                 </div>
         </div>
