@@ -69,14 +69,14 @@ select {
   height: auto;              /* fixed height for clarity */
   line-height: 1.25;
   white-space: pre-wrap;      /* preserves line breaks */
-  margin-right: 3px;
+  margin-right: 2px;
 
 }
 .titles{
   display: inline-block;
   width: auto;
   text-align: left;
-  margin-right: 2px;
+  margin-right: 1px;
   font-size: small
 
 }
