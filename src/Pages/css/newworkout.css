@@ -43,6 +43,16 @@ input{
   filter: drop-shadow(0 0 3px #FF5005);
 
 }
+.inputs{
+  border: 1px solid #fdfdfd;
+  min-width: 55px;
+  width: 70px;
+  filter: drop-shadow(0 0 3px #FF5005);
+  height: 25%;
+  margin-right: 10px;
+
+
+}
 input::placeholder {
   opacity: 1; /* 50% transparency */
   color: black;
@@ -60,13 +70,13 @@ select {
   align-items: flex-end;
 
 }
-span {
-  width: 200px;
-  min-width: 122.35px;
+.titles{
+  display: inline-block;
+  width: auto;
   text-align: left;
-  margin-right: 10px;
-  font-size: medium;
-  
+  margin-right: 2px;
+  font-size: medium
+
 }
 .confirm{
   align-self: center;
