@@ -90,6 +90,7 @@ code {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 .profile-name{
   position: fixed;
