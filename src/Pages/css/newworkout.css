@@ -45,6 +45,16 @@
   flex: 0 0 auto;
   filter: drop-shadow(0 0 0px #FF5005);
 }
+.inputs-name{
+  display: inline-block;
+  border: 1px solid #000000;
+  background-color: #FF5005;
+  width: auto;
+  text-align: center;
+  height: 100%;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 0 0px #FF5005);
+}
 .inputs-number{
   border: 1px solid #f30505;
   filter: drop-shadow(0 0 0px #FF5005);
@@ -56,6 +66,7 @@
   flex: 0 0 auto;           /* prevent flex from stretching */
   appearance: textfield;
 }
+
 
 select {
   border: 1px solid #FF5005;

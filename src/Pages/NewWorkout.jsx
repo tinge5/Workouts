@@ -33,8 +33,8 @@ export default function NewWorkout(){
                 <h1>New Workout</h1>
                 <div className="plan-card">
                     <div className="planning">
-                        <p className= "titles">Workout Name</p>
                         <input
+                            className="inputs-name"
                             type="text"
                             placeholder={workoutName}
                             value={workoutName}
@@ -47,9 +47,8 @@ export default function NewWorkout(){
                         <input
                             className="inputs"
                             type="text"
-                            placeholder={workoutName}
-                            value={workoutName}
-                            onChange={(e) => setWorkoutName(e.target.value)}
+                            placeholder={"bench"}
+                            value={"bench"}
                             />
                         </div>
                         <div className='exercise-header'>
@@ -59,7 +58,6 @@ export default function NewWorkout(){
                             type="number"
                             placeholder={1000}
                             value={1000}
-                            onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
                         <div className='exercise-header'>
@@ -69,7 +67,6 @@ export default function NewWorkout(){
                             type="number"
                             placeholder={1000}
                             value={1000}
-                            onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
                         <div className='exercise-header'>
@@ -79,7 +76,6 @@ export default function NewWorkout(){
                             type="number"
                             placeholder={1000}
                             value={1000}
-                            onChange={(e) => setWorkoutName(e.target.value)}
                             />
                         </div>
 
