@@ -111,7 +111,7 @@ const addExercise = () => {
                         <input
                             className="inputs-name"
                             type="text"
-                            placeholder={workoutName}
+                            placeholder={workoutName || "Workout Name"}
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
                             />
