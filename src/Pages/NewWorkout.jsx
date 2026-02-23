@@ -98,7 +98,7 @@ const workoutArray2 = exercise.map((item, i) => (
                         <p className= "titles">Exercise</p>
                         <input
                             className="inputs"
-                            type="text"
+                            type="text" disabled={true}
                             placeholder={item?.exercise || ""}
                             value={item?.exercise ?? ""}
                             />
@@ -107,7 +107,7 @@ const workoutArray2 = exercise.map((item, i) => (
                         <p className= "titles">Sets</p>
                         <input
                             className="inputs-number"
-                            type="number"
+                            type="number" disabled={true}
                             placeholder={item?.sets || null}
                             value={item?.sets ?? ""}
                             />
@@ -116,7 +116,7 @@ const workoutArray2 = exercise.map((item, i) => (
                         <p className= "titles">Reps</p>
                         <input
                             className="inputs-number"
-                            type="number"
+                            type="number" disabled={true}
                             placeholder={item?.reps || null}
                             value={item?.reps ?? ""}
                             />
@@ -165,7 +165,7 @@ const addExercise = () => {
                     <div className="planning">
                         <input
                             className="inputs-name"
-                            type="text"
+                            type="text" 
                             placeholder={workoutName || "Workout Name"}
                             value={workoutName}
                             onChange={(e) => setWorkoutName(e.target.value)}
