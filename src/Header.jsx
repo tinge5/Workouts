@@ -33,7 +33,7 @@ useEffect(() => {
   
 
   return (
-    <div className="header">
+    <div className="header" style={{marginBottom: "10px"}}>
       <img src="../images/workoutslogo.svg" alt="Logo" className="logo" onClick={() => navigate('/plans')}/>
       <h2 style={{color: "white"}} className="profile-name">{ username ? username : ""}</h2>
       {user1 ? <img src="../images/Profile.svg" alt="Profile" className="profile-logo" onClick={() => navigate('/profile')}/> : null}

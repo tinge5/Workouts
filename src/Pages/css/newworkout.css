@@ -145,7 +145,7 @@ select {
 .edit{
     position: absolute;
     top: 40%;
-    right: -100%;
+    right: -50%;
     filter: drop-shadow(0 0 3px #FF5005);
     width: clamp(30px, 10vw, 70px);
     height: auto;
