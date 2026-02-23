@@ -159,7 +159,7 @@ const addExercise = () => {
         <Header />
         <div style={{display: "flex", flexDirection:"row", position: "relative", gap: "0px", marginBottom: "20px"}}>                 
           <text style={{fontSize: "xx-large"}}>New Workout</text>
-          {!editing && <img src="../images/editWorkout.png" alt="next week" className="edit"onClick={() => setEditing(true)}/>}
+          {!editing && <img src="../images/editWorkout.png" alt="next week" className="edit1"onClick={() => setEditing(true)}/>}
         </div>
                 <div className="plan-card">
                     <div className="planning">
