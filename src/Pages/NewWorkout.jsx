@@ -62,10 +62,10 @@ const workoutArray = exercise.map((item, i) => (
                                 styles={{
                                     control: (base) => ({
                                     ...base,
-                                    border: "1px solid #000000",
-                                    width: "70px",
+                                    border: "1px solid #ff0000",
+                                    width: "80px",
                                     borderRadius: "0px",
-                                    maxWidth: "70px",
+                                    maxWidth: "80px",
                                     minHeight: "unset",
                                     height: "18px",
                                     flex: "0 0 auto",
@@ -73,7 +73,11 @@ const workoutArray = exercise.map((item, i) => (
                                     filter: "drop-shadow(0 0 0px #FF5005)",
                                     padding: 0
                                     }),
-
+                                     singleValue: (base) => ({
+                                        ...base,
+                                        fontSize: '10px',
+                                        margin: 0,
+                                    }),
                                     valueContainer: (base) => ({
                                     ...base,
                                     padding: "0 0px"
@@ -108,7 +112,7 @@ const workoutArray = exercise.map((item, i) => (
                                 value={item.exercise ? { label: item.exercise, value: item.exercise } : null}
                                 onChange={(selectedOption) => {
                                     const updated = [...exercise];
-                                    updated[i] = { ...updated[i], exercise: selectedOption?.value || null };
+                                    updated[i] = { ...updated[i], exercise: selectedOption?.value || null, weight_multiplier: selectedOption?.multiplier || null };
                                     setExercise(updated);
                                 }}
                                 isClearable

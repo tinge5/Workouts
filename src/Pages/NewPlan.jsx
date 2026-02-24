@@ -108,7 +108,7 @@ export default function NewPlan(){
         setTimeout(() => {
             navigate("/plans")
             
-        }, 2000 )
+        }, 1000 )
     }
     useEffect(() => {
         async function retriveplan(){
@@ -188,8 +188,8 @@ export default function NewPlan(){
                             >
                             {/*{user ? <option value={user.email}>{user.email}</option> : null} Make this the users choice when coming from an edit perspective*/}
                             {increase && <option value={increase}>{increase}</option>} {/*Make this the users choice when coming from an edit perspective*/}
-                            <option value="reps">Reps</option>
-                            <option value="weights">Weights</option>
+                            <option value="Reps">Reps</option>
+                            <option value="Weights">Weights</option>
 
                             </select>
                     </div> }
