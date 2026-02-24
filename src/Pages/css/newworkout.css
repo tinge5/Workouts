@@ -53,6 +53,7 @@
   flex: 0 0 auto;
   filter: drop-shadow(0 0 0px #FF5005);
   text-align: left;
+  -webkit-overflow-scrolling: touch;
   overflow-x: auto;
 }
 
