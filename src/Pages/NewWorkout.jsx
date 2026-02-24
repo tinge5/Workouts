@@ -62,12 +62,12 @@ const workoutArray = exercise.map((item, i) => (
                                 styles={{
                                     control: (base) => ({
                                     ...base,
-                                    border: "1px solid #ff0000",
-                                    width: "80px",
+                                    border: "1px solid #000000",
+                                    width: "86px",
                                     borderRadius: "0px",
-                                    maxWidth: "80px",
+                                    maxWidth: "86px",
                                     minHeight: "unset",
-                                    height: "18px",
+                                    height: "20px",
                                     flex: "0 0 auto",
                                     boxShadow: "none",
                                     filter: "drop-shadow(0 0 0px #FF5005)",
@@ -75,7 +75,8 @@ const workoutArray = exercise.map((item, i) => (
                                     }),
                                      singleValue: (base) => ({
                                         ...base,
-                                        fontSize: '10px',
+                                        fontSize: '12px',
+                                        color: 'black',
                                         margin: 0,
                                     }),
                                     valueContainer: (base) => ({
@@ -189,7 +190,7 @@ const workoutArray2 = exercise.map((item, i) => (
                         <div className="exercise-header">
                         <p className= "titles">Exercise</p>
                         <input
-                            className="inputs"
+                            className="inputs-exercise"
                             type="text" disabled={true}
                             placeholder={item?.exercise || ""}
                             value={item?.exercise ?? ""}
@@ -214,7 +215,7 @@ const workoutArray2 = exercise.map((item, i) => (
                             />
                         </div>
                         <div className='exercise-header'>
-                        <p className= "titles">Weight</p>
+                        <p className= "titles"> </p>
                         <input
                             className="inputs-number"
                             type="number"
@@ -227,6 +228,7 @@ const workoutArray2 = exercise.map((item, i) => (
                                 console.log("Updated weight:", updated[i].weight);
                                 }}
                             />
+                        <p className= "titles">Lbs</p>
                         </div>
 
                 </div>
