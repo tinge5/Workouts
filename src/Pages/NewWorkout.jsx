@@ -21,6 +21,32 @@ export default function NewWorkout(){
     const maxWeeks = location.state?.maxWeeks || location.state?.workout?.plans?.Weeks || null
     console.log("Max weeks for this plan: ", maxWeeks)
     console.log("This is the workout ", exercise, " and this is the workout name ", workoutName)
+
+    const [options, setOptions] = useState([]);
+    const [selected, setSelected] = useState(null);
+    useEffect(() => {
+    fetch("/exercise.txt")
+      .then((res) => res.text())
+      .then((text) => {
+        const parsed = text
+          .split("\n")
+          .map((line) => line.trim())
+          .filter((line) => line.length > 0)
+          .map((line) => {
+            const [name, weight] = line.split(",");
+
+            return {
+              label: name.replaceAll("-", " "),
+              value: name,
+              multiplier: parseFloat(weight)
+            };
+          });
+
+        setOptions(parsed);
+        console.log("Options for exercises: ", parsed)
+      });
+  }, []);
+
     useEffect(() => {
         if(!edit){
             setEditing(true)
@@ -31,18 +57,79 @@ const workoutArray = exercise.map((item, i) => (
              <div key={i} className="planning">                    
                         <div className="exercise-header">
                         <p className= "titles">Exercise</p>
-                        <input
-                            className="inputs"
-                            type="text"
-                            placeholder={item?.exercise || ""}
-                            value={item?.exercise ?? ""}
-                            onChange={(e) => {
-                                const updated = [...exercise];
-                                updated[i] = { ...updated[i], exercise: e.target.value };
-                                setExercise(updated);
-                                console.log("Updated exercise:", updated[i].exercise);
+                        <CreatableSelect
+                                options={options}
+                                styles={{
+                                    control: (base) => ({
+                                    ...base,
+                                    border: "1px solid #000000",
+                                    width: "70px",
+                                    borderRadius: "0px",
+                                    maxWidth: "70px",
+                                    minHeight: "unset",
+                                    height: "18px",
+                                    flex: "0 0 auto",
+                                    boxShadow: "none",
+                                    filter: "drop-shadow(0 0 0px #FF5005)",
+                                    padding: 0
+                                    }),
+
+                                    valueContainer: (base) => ({
+                                    ...base,
+                                    padding: "0 0px"
+                                    }),
+
+                                    input: (base) => ({
+                                    ...base,
+                                    margin: 0,
+                                    padding: 0
+                                    }),
+
+                                    indicatorsContainer: (base) => ({
+                                    ...base,
+                                    height: "100%"
+                                    }),
+
+                                    dropdownIndicator: (base) => ({
+                                    ...base,
+                                    padding: 0
+                                    }),
+
+                                    clearIndicator: (base) => ({
+                                    ...base,
+                                    padding: 0
+                                    }),
+
+                                    menu: (base) => ({
+                                    ...base,
+                                    width: "100px" 
+                                    })
                                 }}
-                            />
+                                value={item.exercise ? { label: item.exercise, value: item.exercise } : null}
+                                onChange={(selectedOption) => {
+                                    const updated = [...exercise];
+                                    updated[i] = { ...updated[i], exercise: selectedOption?.value || null };
+                                    setExercise(updated);
+                                }}
+                                isClearable
+                                components={{
+                                    ClearIndicator: null,
+                                    IndicatorSeparator: null,
+                                    DropdownIndicator: (props) => (
+                                        <div {...props.innerProps} style={{ padding: 2 }}>
+                                            <svg
+                                            height="8"
+                                            width="8"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                            >
+                                            <path d="M5 7l5 5 5-5H5z" />
+                                            </svg>
+                                        </div>
+                                    )
+                                }}
+                                placeholder={item?.exercise || ""}
+                        />
                         </div>
                         <div className='exercise-header'>
                         <p className= "titles">Sets</p>
@@ -75,7 +162,7 @@ const workoutArray = exercise.map((item, i) => (
                             />
                         </div>
                         <div className='exercise-header'>
-                        <p className= "titles">Weight</p>
+                        <p className= "titles"> </p>
                         <input
                             className="inputs-number"
                             type="number"
@@ -88,6 +175,7 @@ const workoutArray = exercise.map((item, i) => (
                                 console.log("Updated weight:", updated[i].weight);
                                 }}
                             />
+                        <p className= "titles">Lbs</p>
                         </div>
 
                 </div>
@@ -139,7 +227,15 @@ const workoutArray2 = exercise.map((item, i) => (
 
                 </div>
     ));
-
+async function completeWorkout(){
+    const sure = window.confirm("Are you finished the workout? This will log your workout and update your progress for the week.")
+    if(sure){
+        setTimeout(() => {
+            navigate("/workouts")
+            
+        }, 1000 )
+    }
+}
 const addExercise = () => {
   setExercise(prev => [
     ...prev,
@@ -174,7 +270,7 @@ const addExercise = () => {
                     {editing ? workoutArray : workoutArray2}
                     {editing && <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={addExercise}/>}
                     {editing &&<button className="confirm" onClick={() => setEditing(false)}>Confirm</button>}
-                    {!editing && <button className="finish">Finish</button>}
+                    {!editing && <button className="finish" onClick={() => completeWorkout()}>Completed</button>}
         </div>
     
 

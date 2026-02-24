@@ -190,7 +190,6 @@ export default function NewPlan(){
                             {increase && <option value={increase}>{increase}</option>} {/*Make this the users choice when coming from an edit perspective*/}
                             <option value="reps">Reps</option>
                             <option value="weights">Weights</option>
-                            <option value="mix">Mix</option>
 
                             </select>
                     </div> }

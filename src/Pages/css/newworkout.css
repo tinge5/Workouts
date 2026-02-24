@@ -92,7 +92,7 @@ select {
   height: auto;              /* fixed height for clarity */
   line-height: 1.25;
   white-space: pre-wrap;      /* preserves line breaks */
-  margin-right: 5px;
+  margin-right: 0px;
 
 }
 .titles{
@@ -166,4 +166,25 @@ input:disabled {
   min-width: 60px;
   width: 151px;
 
+}
+.select__control {
+  background: #111;
+  border: 1px solid #333;
+}
+
+.select__menu {
+  background: #222;
+}
+
+.select__option {
+  background: #222;
+  color: white;
+}
+
+.select__option--is-focused {
+  background: #333;
+}
+
+.select__option--is-selected {
+  background: #4CAF50;
 }
