@@ -202,8 +202,6 @@ export default function NewPlan(){
                             {/*{user ? <option value={user.email}>{user.email}</option> : null} Make this the users choice when coming from an edit perspective*/}
                             <option value="reps">Reps</option>
                             <option value="weight">Weights</option>
-                            <option value="mix">Mix</option>
-
                             </select>
                     </div> }                    <div className="planning">
                         <button onClick={() => confrim()}className="confirm">Confirm</button>
