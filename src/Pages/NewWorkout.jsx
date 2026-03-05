@@ -21,7 +21,7 @@ export default function NewWorkout(){
     const maxWeeks = location.state?.maxWeeks || location.state?.workout?.plans?.Weeks || null
     console.log("Max weeks for this plan: ", maxWeeks)
     console.log("This is the workout ", exercise, " and this is the workout name ", workoutName)
-
+    console.log("The workout is: ", workout)
     const [options, setOptions] = useState([]);
     const [selected, setSelected] = useState(null);
     useEffect(() => {
@@ -53,7 +53,70 @@ export default function NewWorkout(){
         }
         
     }, [user, exercise, workoutName])
+function generateWorkoutWeeks(thisWeek, maxWeeks) {
+  const allWeeks = [];
+
+  for (let week = 1; week <= maxWeeks; week++) {
+
+    const weekExercises = thisWeek.map(ex => {
+
+      let newWeight = ex.weight;
+
+      if (ex.weight && ex.weight_multiplier) {
+        newWeight = ex.weight * Math.pow(1 + ex.weight_multiplier, week - 1);
+        newWeight = Math.round(newWeight); // optional rounding
+      }
+
+      return {
+        ...ex,
+        week: week,
+        weight: newWeight
+      };
+    });
+
+    allWeeks.push(...weekExercises);
+  }
+
+  return allWeeks;
+}
+function buildWorkoutRows(allExercises, workoutName) {
+
+  const grouped = {};
+
+  allExercises.forEach(ex => {
+
+    const weeknum = ex.week;
+
+    if (!grouped[weeknum]) {
+      grouped[weeknum] = {
+        Workout_name: workoutName,
+        userID: workout?.userID || user.id,
+        planID: workout?.plans?.planID || null,
+        complete: false,
+        Notes: null,
+        WorkoutID: workout.WorkoutID,
+        week: weeknum,
+        Exercise: []
+      };
+    }
+
+    const { week, ...exerciseData } = ex;
+
+    grouped[weeknum].Exercise.push(exerciseData);
+
+  });
+
+  return Object.values(grouped);
+}
+const removeExercise = (indexToRemove) => {
+    const remove = window.confirm("remove exercise from workout?")
+    if(remove){
+
+    setExercise(prev => prev.filter((_, i) => i !== indexToRemove));
+}};
+
 const workoutArray = exercise.map((item, i) => (
+            
              <div key={i} className="planning">                    
                         <div className="exercise-header">
                         <p className= "titles">Exercise</p>
@@ -182,7 +245,8 @@ const workoutArray = exercise.map((item, i) => (
                             />
                         <p className= "titles">Lbs</p>
                         </div>
-
+                <img src="../images/remove.png" alt="Delete Exercise" className="delete-icon" onClick={() => removeExercise(i)}></img>
+                                
                 </div>
     ));
 const workoutArray2 = exercise.map((item, i) => (
@@ -255,6 +319,26 @@ const addExercise = () => {
     }
   ]);
 };
+async function confirmEdit() {
+    const sure = window.confirm("Are you finished editing? This will update all workouts for the plans weeks.")
+    if (!sure) return;
+    const allWeeks = generateWorkoutWeeks(exercise, maxWeeks);
+    console.log("All weeks generated for workout: ", allWeeks);
+    console.log("type:", typeof allWeeks);
+    const rows = buildWorkoutRows(allWeeks, workoutName);
+    console.log("Rows to insert into database: ", rows);
+    const { data, error } = await supabase
+        .from("Workouts")
+        .upsert(rows, { onConflict: "WorkoutID,week" });
+
+        if (error) {
+        console.error("Upsert failed:", error);
+        } else {
+        console.log("Upsert successful:", data);
+}
+    //setEditing(false);
+
+}
   
     return (
         <div className="screen">
@@ -275,7 +359,7 @@ const addExercise = () => {
                     </div>
                     {editing ? workoutArray : workoutArray2}
                     {editing && <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={addExercise}/>}
-                    {editing &&<button className="confirm" onClick={() => setEditing(false)}>Confirm</button>}
+                    {editing &&<button className="confirm" onClick={() => confirmEdit()}>Confirm</button>}
                     {!editing && <button className="finish" onClick={() => completeWorkout()}>Completed</button>}
         </div>
     

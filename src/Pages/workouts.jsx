@@ -49,7 +49,6 @@ export default function Workouts() {
     `)  
             .eq('userID', user.id)
             .eq('plans.plan_number', planNumber)
-            .eq('plans.Current_week', currentWeek)
             .eq('week', currentWeek);
 
         if (!data || data.length === 0) {
