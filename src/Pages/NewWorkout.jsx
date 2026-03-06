@@ -62,18 +62,24 @@ export default function NewWorkout(){
     }, [user, exercise, workoutName])
 function generateWorkoutWeeks(thisWeek, maxWeeks) {
   const allWeeks = [];
+  let curWeek = location.state?.currentWeek || 1;
 
-  for (let week = 1; week <= maxWeeks; week++) {
+  for (let week = location.state?.currentWeek || 1; week <= maxWeeks; week++) {
 
     const weekExercises = thisWeek.map(ex => {
 
       let newWeight = ex.weight;
 
-      if (ex.weight && ex.weight_multiplier) {
-        newWeight = ex.weight * Math.pow(1 + ex.weight_multiplier, week - 1);
-        newWeight = Math.round(newWeight); // optional rounding
-      }
+      if (week > curWeek && ex.weight && ex.weight_multiplier) {
 
+        const progressionStep = week - curWeek;
+
+        newWeight = ex.weight * Math.pow(1 + ex.weight_multiplier, progressionStep);
+
+        
+
+        newWeight = Math.round(newWeight / 5) * 5;
+}
       return {
         ...ex,
         week: week,
