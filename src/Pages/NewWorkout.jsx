@@ -28,7 +28,6 @@ export default function NewWorkout(){
     console.log("The workout is: ", workout)
     const [options, setOptions] = useState([]);
     const [selected, setSelected] = useState(null);
-    const og = exercise
     useEffect(() => {
     fetch("/exercise.txt")
       .then((res) => res.text())
@@ -354,10 +353,6 @@ const addExercise = () => {
   ]);
 };
 async function confirmEdit() {
-    if (exercise == og){
-        setEditing(false);
-        return;
-    }
     const sure = window.confirm("Are you finished editing? This will update all workouts for the plans weeks.")
     if (!sure) return;
     const allWeeks = generateWorkoutWeeks(exercise, maxWeeks);
