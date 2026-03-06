@@ -17,6 +17,10 @@ export default function NewWorkout(){
     const [exercise, setExercise] = useState(location.state?.workout?.Exercise || [])
     console.log("Location state in NewWorkout:", location.state);
     const workout = location.state?.workout || null
+    const [newWorkout, setNewWorkout] = useState(location.state?.new || false)
+    const[workoutID, setWorkoutID] = useState(location.state?.workout?.WorkoutID || crypto.randomUUID())
+    console.log("The workoutID is ", workoutID)
+    console.log("Is this a new workout? ", newWorkout)
     console.log("This is editing? ", edit)
     const maxWeeks = location.state?.maxWeeks || location.state?.workout?.plans?.Weeks || null
     console.log("Max weeks for this plan: ", maxWeeks)
@@ -24,6 +28,7 @@ export default function NewWorkout(){
     console.log("The workout is: ", workout)
     const [options, setOptions] = useState([]);
     const [selected, setSelected] = useState(null);
+    const og = exercise
     useEffect(() => {
     fetch("/exercise.txt")
       .then((res) => res.text())
@@ -88,17 +93,31 @@ function buildWorkoutRows(allExercises, workoutName) {
     const weeknum = ex.week;
 
     if (!grouped[weeknum]) {
-      grouped[weeknum] = {
+        if (newWorkout){
+            grouped[weeknum] = {
+                Workout_name: workoutName,
+                userID: workout?.userID || user.id,
+                planID: workout?.plans?.planID || location.state?.planID || null,
+                complete: false,
+                Notes: null,
+                WorkoutID: workoutID,
+                week: weeknum,
+                Exercise: []
+        }
+        setNewWorkout(false);
+    } else {
+        grouped[weeknum] = {
         Workout_name: workoutName,
         userID: workout?.userID || user.id,
         planID: workout?.plans?.planID || null,
         complete: false,
         Notes: null,
-        WorkoutID: workout.WorkoutID,
+        WorkoutID: workoutID,        
         week: weeknum,
         Exercise: []
       };
     }
+}
 
     const { week, ...exerciseData } = ex;
 
@@ -306,6 +325,21 @@ async function completeWorkout(){
         }, 1000 )
     }
 }
+const GoBack = () => {
+    navigate("/workouts")
+}
+const deleteWorkout = async () => {
+    const sure = window.confirm("Are you sure you want to delete this workout? This cannot be undone.")
+    if(!sure) return;
+    const { data, error } = await supabase        .from("Workouts")
+        .delete()
+        .eq("WorkoutID", workoutID);
+    if (error) {
+        console.error("Delete failed:", error);
+    } else {        console.log("Delete successful:", data);
+        navigate("/workouts")
+    }
+}
 const addExercise = () => {
   setExercise(prev => [
     ...prev,
@@ -320,6 +354,10 @@ const addExercise = () => {
   ]);
 };
 async function confirmEdit() {
+    if (exercise == og){
+        setEditing(false);
+        return;
+    }
     const sure = window.confirm("Are you finished editing? This will update all workouts for the plans weeks.")
     if (!sure) return;
     const allWeeks = generateWorkoutWeeks(exercise, maxWeeks);
@@ -327,6 +365,17 @@ async function confirmEdit() {
     console.log("type:", typeof allWeeks);
     const rows = buildWorkoutRows(allWeeks, workoutName);
     console.log("Rows to insert into database: ", rows);
+    if(newWorkout){
+        const { data, error } = await supabase
+            .from("Workouts")
+            .insert(rows)
+            .select();
+        if (error) {
+            console.error("Insert failed:", error);
+        } else {
+            console.log("Insert successful:", data);
+        }
+    } else {
     const { data, error } = await supabase
         .from("Workouts")
         .upsert(rows, { onConflict: "WorkoutID,week" });
@@ -336,7 +385,9 @@ async function confirmEdit() {
         } else {
         console.log("Upsert successful:", data);
 }
-    //setEditing(false);
+
+    }
+    setEditing(false);
 
 }
   
@@ -361,6 +412,8 @@ async function confirmEdit() {
                     {editing && <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={addExercise}/>}
                     {editing &&<button className="confirm" onClick={() => confirmEdit()}>Confirm</button>}
                     {!editing && <button className="finish" onClick={() => completeWorkout()}>Completed</button>}
+                    {!editing && <button className="GoBack" onClick={() => GoBack()}>Back</button>}
+                    {!editing && <button className="delete" onClick={() => deleteWorkout()}>Delete</button>}
         </div>
     
 

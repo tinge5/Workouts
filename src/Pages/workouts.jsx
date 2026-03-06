@@ -138,7 +138,7 @@ export default function Workouts() {
         ))}
           
 
-        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => navigate("/newworkout",{ state: { week: currentWeek, maxWeeks: maxWeeks } })}/>
+        <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={() => navigate("/newworkout",{ state: { week: currentWeek, maxWeeks: maxWeeks, new: true, planID: selectedPlan?.planID } })}/>
 
         </div>
       </div>

@@ -180,6 +180,36 @@ input:disabled {
   width: 151px;
 
 }
+.finish:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
+.GoBack{
+  align-self: center;
+  color: #FF5005;
+  background-color: #000000;
+  border-color: #FF5005;
+  min-width: 60px;
+  width: 151px;
+
+}
+.GoBack:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
+.delete{
+  align-self: center;
+  color: #ff0505;
+  background-color: #000000;
+  border-color: #ff0505;
+  min-width: 60px;
+  width: 151px;
+
+}
+.delete:hover {
+  opacity: 0.7; /* Example: make the image slightly transparent */
+  cursor: pointer; /* Ensures the hand icon appears on the image itself */
+}
 .select__control {
   background: #111;
   border: 1px solid #333;
