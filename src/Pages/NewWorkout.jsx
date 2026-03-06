@@ -6,6 +6,7 @@ import CreatableSelect from "react-select/creatable"
 import "./css/newworkout.css";
 import Header from "../Header"
 import { use } from "react"
+import {useRef} from "react"
 
 export default function NewWorkout(){
     const user = useRStatus();
@@ -28,6 +29,8 @@ export default function NewWorkout(){
     console.log("The workout is: ", workout)
     const [options, setOptions] = useState([]);
     const [selected, setSelected] = useState(null);
+    const og = useRef(exercise);
+    const ogName = useRef(workoutName);
     useEffect(() => {
     fetch("/exercise.txt")
       .then((res) => res.text())
@@ -353,6 +356,10 @@ const addExercise = () => {
   ]);
 };
 async function confirmEdit() {
+    if(exercise === og.current && workoutName === ogName.current) {
+        setEditing(false);
+        return
+    };
     const sure = window.confirm("Are you finished editing? This will update all workouts for the plans weeks.")
     if (!sure) return;
     const allWeeks = generateWorkoutWeeks(exercise, maxWeeks);
@@ -382,6 +389,8 @@ async function confirmEdit() {
 }
 
     }
+    og.current = exercise;
+    ogName.current = workoutName;
     setEditing(false);
 
 }

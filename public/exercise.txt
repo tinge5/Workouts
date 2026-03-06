@@ -79,32 +79,27 @@ smith-machine-bench-press, 0.025
 smith-machine-incline-bench, 0.025
 floor-press, 0.02
 board-press, 0.02
-
 pendlay-row, 0.02
 landmine-row, 0.02
 single-arm-dumbbell-lat-row, 0.02
 wide-grip-lat-pulldown, 0.02
 close-grip-lat-pulldown, 0.02
 neutral-grip-lat-pulldown, 0.02
-
 barbell-shrug, 0.02
 dumbbell-shrug, 0.02
 smith-machine-shrug, 0.02
 farmer-carry, 0.02
-
 landmine-press, 0.02
 seated-dumbbell-press, 0.02
 push-press, 0.025
 behind-the-neck-press, 0.02
 plate-front-raise, 0.01
 leaning-cable-lateral-raise, 0.01
-
 zottman-curl, 0.015
 reverse-barbell-curl, 0.015
 reverse-dumbbell-curl, 0.015
 spider-curl, 0.015
 drag-curl, 0.015
-
 bench-dip, 0.02
 weighted-bench-dip, 0.025
 lying-tricep-extension, 0.02
