@@ -12,14 +12,14 @@ export default function Workouts() {
     const [addPlan, setAddPlan] = useState(false);
     const [workouts, setWorkouts] = useState([]);
     const [exercise, setExercise] = useState([]);
-    const [maxWeeks, setMaxWeeks] = useState(null)
     const location = useLocation();
+    const [maxWeeks, setMaxWeeks] = useState(location.state?.plan?.Weeks || null) // Default to 4 weeks if not provided in the plan
     const navigate = useNavigate();
     const userplanNum = location.state?.userplans || null
     const selectedPlan = location.state?.plan || null
-    const [currentWeek, setCurrentWeek] = useState(location.state?.week || 1)
+    const [currentWeek, setCurrentWeek] = useState(location.state?.week || location.state?.currentWeek || 1)
     const [planName, setPlanName] = useState(null);
-    const planNumber = location.state?.planNumber || 1; // Default to plan 1 if not provided
+    const planNumber = location.state?.planNumber || null; // Default to plan 1 if not provided
     console.log("Navigated to Workouts page for Plan Number:", planNumber, currentWeek);
     useEffect(() => {
     async function DisplayWorkout() {
@@ -64,7 +64,7 @@ export default function Workouts() {
           console.log("Heres the users workouts:", data, data[0].UserAccounts.username, data[0].Exercise);
           setWorkouts(data);
           setExercise(data[0].Exercise)
-          setMaxWeeks(data[0].plans.Weeks)
+          setMaxWeeks(data[0].plans.Weeks || selectedPlan?.Weeks || null) // Set max weeks based on the plan's Weeks value, or default to 4 if not available
           setPlanName(data[0].plans.plan_name);
           console.log(workouts)
           console.log(exercise)

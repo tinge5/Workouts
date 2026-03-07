@@ -24,6 +24,8 @@ export default function NewWorkout(){
     console.log("Is this a new workout? ", newWorkout)
     console.log("This is editing? ", edit)
     const maxWeeks = location.state?.maxWeeks || location.state?.workout?.plans?.Weeks || null
+    const planNumber = location.state?.workout?.plans?.plan_number || null
+    const plan = location.state?.workout?.plans || null
     console.log("Max weeks for this plan: ", maxWeeks)
     console.log("This is the workout ", exercise, " and this is the workout name ", workoutName)
     console.log("The workout is: ", workout)
@@ -328,13 +330,13 @@ async function completeWorkout(){
     const sure = window.confirm("Are you finished the workout? This will log your workout and update your progress for the week.")
     if(sure){
         setTimeout(() => {
-            navigate("/workouts")
-            
+            navigate("/workouts", { state:{ week: location.state?.currentWeek || 1, planNumber: planNumber, plan: plan } })
+             
         }, 1000 )
     }
 }
 const GoBack = () => {
-    navigate("/workouts")
+    navigate("/workouts", { state:{ week: location.state?.currentWeek || 1, planNumber: planNumber, plan: plan } })
 }
 const deleteWorkout = async () => {
     const sure = window.confirm("Are you sure you want to delete this workout? This cannot be undone.")
