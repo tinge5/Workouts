@@ -426,7 +426,7 @@ async function confirmEdit() {
                     {editing ? workoutArray : workoutArray2}
                     {editing && <img src="../images/plus2.png" alt="Add Plan" className="plus-icon" onClick={addExercise}/>}
                     {editing &&<button className="confirm" onClick={() => confirmEdit()}>Confirm</button>}
-                    {!editing && <button className="finish" onClick={() => completeWorkout()}>Completed</button>}
+                    {!editing && <button className="finish" onClick={() => completeWorkout()}>Lift Finished</button>}
                     {!editing && <button className="GoBack" onClick={() => GoBack()}>Back</button>}
                     {!editing && <button className="delete" onClick={() => deleteWorkout()}>Delete</button>}
         </div>
