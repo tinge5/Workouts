@@ -100,3 +100,8 @@ code {
   filter: drop-shadow(0 0 5px #fffffe);
 
 }
+.inputs,
+.inputs-number,
+.inputs-name {
+  font-size: 16px;
+}

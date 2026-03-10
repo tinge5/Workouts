@@ -163,7 +163,9 @@ const workoutArray = exercise.map((item, i) => (
                                     flex: "0 0 auto",
                                     boxShadow: "none",
                                     filter: "drop-shadow(0 0 0px #FF5005)",
-                                    padding: 0
+                                    padding: 0,
+                                    fontSize: 16
+
                                     }),
                                      singleValue: (base) => ({
                                         ...base,
@@ -179,7 +181,8 @@ const workoutArray = exercise.map((item, i) => (
                                     input: (base) => ({
                                     ...base,
                                     margin: 0,
-                                    padding: 0
+                                    padding: 0,
+                                    fontSize: 16
                                     }),
 
                                     indicatorsContainer: (base) => ({
