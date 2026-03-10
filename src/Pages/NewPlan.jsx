@@ -155,6 +155,7 @@ export default function NewPlan(){
                             placeholder={plan_name}
                             value={plan_name}
                             onChange={(e) => setPlan_name(e.target.value)}
+                            style={{ fontSize: "16px" }}
                             />
                         
                         </div>
@@ -165,6 +166,7 @@ export default function NewPlan(){
                             type="text"
                             placeholder={maxWeeks}
                             value={maxWeeks}
+                            style={{ fontSize: "16px" }}
                             onChange={(e) => setMaxWeeks(e.target.value)}
                             />
                      </div>

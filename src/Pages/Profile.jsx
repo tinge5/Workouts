@@ -68,9 +68,9 @@ async function updateUsername(name){
     <div className="screen">
         <Header />
       <h1 style={{ color: "white", textAlign: "center" }}>Profile Page</h1>
-      <p>Chang username or sign out</p>
+      <p>Change username or sign out</p>
       <div style={{gap:"10px", display:"flex", flexDirection:"row", alignItems:"center", marginBottom:"10px"}}>
-        <input type="text" placeholder={username} onChange={(e) => setName(e.target.value)}></input>
+        <input type="text" placeholder={username} style={{ fontSize: "16px" }} onChange={(e) => setName(e.target.value)}></input>
         <button className="buttons" onClick={() => updateUsername(name)}>Update</button>
       </div>
       <button className="buttons" onClick={signout}>Sign Out</button>

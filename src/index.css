@@ -102,6 +102,10 @@ code {
 }
 .inputs,
 .inputs-number,
-.inputs-name {
+.inputs-name,
+.inputs-text {
+  font-size: 16px;
+}
+.select {
   font-size: 16px;
 }
